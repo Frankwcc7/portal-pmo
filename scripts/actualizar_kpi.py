@@ -78,6 +78,17 @@ def main() -> None:
     if not EXCEL_URL:
         sys.exit("Falta EXCEL_URL.")
     proyectos, iniciativas = contar(descargar(EXCEL_URL))
+    # Si los números no cambiaron, no se toca kpi.json: así no se crea un commit
+    # ni se vuelve a publicar la web en cada ejecución (GitHub Pages limita
+    # las publicaciones a ~10 por hora).
+    try:
+        with open(SALIDA, encoding="utf-8") as f:
+            actual = json.load(f)
+        if actual.get("projectCount") == proyectos and actual.get("initiativeCount") == iniciativas:
+            print("Sin cambios en Data_madre; kpi.json se mantiene.")
+            return
+    except (FileNotFoundError, ValueError):
+        pass
     salida = {
         "projectCount": proyectos,
         "initiativeCount": iniciativas,
