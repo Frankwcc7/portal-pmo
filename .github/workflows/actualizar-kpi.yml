@@ -1,0 +1,36 @@
+name: Actualizar KPI del portal PMO
+
+on:
+  schedule:
+    # >>> MODO PRUEBA: cada 5 minutos (mínimo que permite GitHub) <<<
+    # Cuando termines de probar, borra esta línea y quita el "#" de las dos de abajo.
+    - cron: "*/5 * * * *"
+    # Días 1, 11, 21, 30 y 31 de cada mes, 6:00 a. m. hora de Lima (11:00 UTC)
+    # - cron: "0 11 1,11,21,30,31 * *"
+    # Febrero: también los días 28 y 29 (el 29 solo en años bisiestos)
+    # - cron: "0 11 28,29 2 *"
+  workflow_dispatch: {} # botón "Run workflow" para actualizar a mano
+
+permissions:
+  contents: write
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install openpyxl
+      - name: Leer Data_madre y generar kpi.json
+        env:
+          EXCEL_URL: ${{ secrets.EXCEL_URL }}
+        run: python scripts/actualizar_kpi.py
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add kpi.json
+          git diff --cached --quiet || git commit -m "Actualizar KPI desde Data_madre"
+          git push
