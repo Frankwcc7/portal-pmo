@@ -6,6 +6,7 @@
 Requiere que el enlace del Excel sea de "Cualquier persona con el vínculo".
 El enlace se toma del secreto EXCEL_URL (GitHub Actions) o de la variable de entorno.
 """
+import http.cookiejar
 import io
 import json
 import os
@@ -28,13 +29,22 @@ def url_descarga(url: str) -> str:
 
 
 def descargar(url: str) -> bytes:
-    req = urllib.request.Request(url_descarga(url), headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=60) as r:
+    # SharePoint redirige y guarda una cookie de invitado antes de entregar el archivo,
+    # así que se usa un "navegador" que conserva cookies entre redirecciones.
+    opener = urllib.request.build_opener(
+        urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar())
+    )
+    opener.addheaders = [("User-Agent", "Mozilla/5.0")]
+    with opener.open(url_descarga(url), timeout=60) as r:
         datos = r.read()
+        final = r.geturl()
+        estado = r.status
     if not datos.startswith(b"PK"):
+        print(f"HTTP {estado} · URL final: {final.split('?')[0]}")
+        if "login" in final.lower() or "authorize" in final.lower():
+            print("SharePoint pidió iniciar sesión: el enlace no es de 'Cualquier persona'.")
         sys.exit(
-            "No se descargó un .xlsx (probablemente pidió iniciar sesión). "
-            "Revisa que el enlace sea de 'Cualquier persona con el vínculo'."
+            "No se descargó un .xlsx. Revisa que el enlace sea de 'Cualquier persona con el vínculo'."
         )
     return datos
 
