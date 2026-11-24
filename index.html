@@ -1869,6 +1869,17 @@
     .bim-frame iframe { position: relative; z-index: 1; display: block; width: 100%; height: 2650px; border: 0; overflow: hidden; }
     .bim-loading { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: #8095A8; font-size: 14px; }
     @media (max-width: 760px) { .bim-embed-bar { justify-content: center; text-align: center; } }
+  /* Correcciones de alineación: hito actual y conectores del organigrama */
+#managementView .timeline-item:last-child .timeline-card { width:420px; max-width:calc(100vw - 36px); right:0; left:auto; }
+@media(max-width:600px) { #managementView .timeline-item:last-child .timeline-card { width:min(360px,calc(100vw - 48px)); } }
+#managementView .org-chart { position:relative; }
+#managementView .org-top-connectors::before, #managementView .org-top-connectors::after,
+#managementView .org-top-connectors .org-node::before,
+#managementView .org-portfolio-grid::before, #managementView .org-portfolio-grid::after,
+#managementView .org-portfolio::before { display:none; }
+#managementView .org-connectors { position:absolute; inset:0; z-index:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
+#managementView .org-connectors path { fill:none; stroke:#8FB9CD; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+#managementView .org-sponsor, #managementView .org-top-connectors, #managementView .org-portfolio-grid { position:relative; z-index:1; }
   </style>
 </head>
 <body>
@@ -2436,6 +2447,7 @@
           <div class="org-heading"><span class="section-kicker">Estructura organizacional</span><h2 id="orgTitle">Organización de la PMO</h2><p>Selecciona un nodo para conocer la función de cada instancia y equipo.</p></div>
           <div class="org-scroll" tabindex="0" aria-label="Organigrama desplazable horizontalmente">
             <div class="org-chart">
+              <svg class="org-connectors" aria-hidden="true" focusable="false"></svg>
               <button class="org-node org-sponsor is-selected" type="button" data-org-title="Sponsor de los Portafolios" data-org-description="Patrocina la gestión de los portafolios y brinda respaldo ejecutivo para su alineamiento estratégico."><strong>Sponsor de los Portafolios</strong><small>Patrocinio ejecutivo</small></button>
               <div class="org-top-connectors">
                 <button class="org-node" type="button" data-org-title="Oficina de Gestión de Proyectos (PMO) Institucional" data-org-description="Articula la gestión de portafolios, programas y proyectos, y facilita metodologías, seguimiento y soporte institucional."><strong>Oficina de Gestión de Proyectos (PMO)</strong><small>Institucional</small></button>
@@ -3023,6 +3035,47 @@
   update();
 })();
 </script><script>
+(() => {
+  const chart = document.querySelector('#managementView .org-chart');
+  const svg = chart?.querySelector('.org-connectors');
+  if (!chart || !svg) return;
+  const connect = (source, targets) => {
+    if (!source || !targets.length) return;
+    const base = chart.getBoundingClientRect();
+    const start = source.getBoundingClientRect();
+    const points = targets.map(node => node.getBoundingClientRect());
+    const x1 = start.left + start.width / 2 - base.left;
+    const y1 = start.bottom - base.top;
+    const y2 = Math.min(...points.map(rect => rect.top - base.top));
+    const branchY = y1 + Math.max(14, (y2 - y1) / 2);
+    const centers = points.map(rect => rect.left + rect.width / 2 - base.left);
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    let d = `M ${x1} ${y1} V ${branchY} H ${Math.min(...centers)}`;
+    if (centers.length > 1) d += ` M ${Math.min(...centers)} ${branchY} H ${Math.max(...centers)}`;
+    centers.forEach((x, index) => { d += ` M ${x} ${branchY} V ${points[index].top - base.top}`; });
+    path.setAttribute('d', d);
+    svg.appendChild(path);
+  };
+  const draw = () => {
+    const width = chart.scrollWidth;
+    const height = chart.scrollHeight;
+    svg.setAttribute('width', width);
+    svg.setAttribute('height', height);
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.replaceChildren();
+    const sponsor = chart.querySelector('.org-sponsor');
+    const topNodes = Array.from(chart.querySelectorAll('.org-top-connectors .org-node'));
+    const pmo = topNodes.find(node => node.dataset.orgTitle?.startsWith('Oficina de Gestión'));
+    const owners = Array.from(chart.querySelectorAll('.org-owner'));
+    connect(sponsor, topNodes);
+    connect(pmo, owners);
+  };
+  draw();
+  window.addEventListener('resize', draw);
+  if ('ResizeObserver' in window) new ResizeObserver(draw).observe(chart);
+})();
+</script>
+<script>
   // Logo del encabezado y del pie: vuelven al Inicio. El año del pie se mantiene al día.
   (function () {
     const inicio = document.querySelector('nav a[data-page="inicio"]');
