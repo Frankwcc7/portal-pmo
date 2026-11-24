@@ -1850,6 +1850,7 @@
     .pbi-frame iframe {
       position: absolute; left: 0; top: -21.26cqw; width: 100%;
       height: calc(56.25cqw + 58px); border: 0;
+      pointer-events: none; /* los KPI son solo de lectura: evita zoom, desplazamiento y clics dentro del informe */
     }
     .pbi-note { margin: 8px 4px 0; color: #8095A8; font-size: 12px; text-align: right; }
     @media (max-width: 760px) { .pbi-note { text-align: center; } }
