@@ -1840,11 +1840,12 @@
 @media(max-width:900px) { #projectsView .project-photo-card { flex-basis:calc((100% - 16px) / 2); } }
 @media(max-width:600px) { #projectsView .project-gallery { padding:18px 14px; } #projectsView .project-gallery-heading { align-items:flex-start; } #projectsView .project-photo-card { flex-basis:100%; } #projectsView .project-photo-placeholder { height:210px; } }    .pbi-kpis { padding-top: 6px; padding-bottom: 26px; }
     .pbi-frame {
-      position: relative; width: 100%; aspect-ratio: 1140 / 541.25;
+      position: relative; width: 100%; aspect-ratio: 16 / 9;
       overflow: hidden; border: 1px solid #DCE8F0; border-radius: 18px;
       background: #fff; box-shadow: 0 10px 28px rgba(0,55,105,.08);
     }
-    .pbi-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    /* El iframe es 36 px más alto que el recuadro para ocultar la barra inferior de Power BI. */
+    .pbi-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: calc(100% + 36px); border: 0; }
     .pbi-note { margin: 10px 4px 0; color: #667C8E; font-size: 12.5px; text-align: right; }
     .pbi-note a { color: var(--blue); font-weight: 700; }
     @media (max-width: 760px) { .pbi-note { text-align: center; } }
@@ -1908,9 +1909,9 @@
 
     <section class="content pbi-kpis" aria-label="Indicadores generales">
       <div class="pbi-frame">
-        <iframe title="Indicadores de la PMO (Power BI)" src="https://app.powerbi.com/reportEmbed?reportId=8c4a21b5-87af-4d1a-9176-c0ae7b6247fa&amp;autoAuth=true&amp;ctid=f934e5f7-0088-4bee-a7de-b9ecc5f6941d" allowfullscreen></iframe>
+        <iframe title="Indicadores de la PMO (Power BI)" src="https://app.powerbi.com/view?r=eyJrIjoiZDQ4YmJkYTAtNjU1ZS00ZDE4LWE5ZjEtYTA4NjA2NWRlNTRkIiwidCI6ImY5MzRlNWY3LTAwODgtNGJlZS1hN2RlLWI5ZWNjNWY2OTQxZCIsImMiOjR9" allowfullscreen></iframe>
       </div>
-      <p class="pbi-note">Indicadores actualizados desde Power BI · <a href="https://app.powerbi.com/reportEmbed?reportId=8c4a21b5-87af-4d1a-9176-c0ae7b6247fa&amp;autoAuth=true&amp;ctid=f934e5f7-0088-4bee-a7de-b9ecc5f6941d" target="_blank" rel="noopener">Ver en pantalla completa</a></p>
+      <p class="pbi-note">Indicadores actualizados desde Power BI · <a href="https://app.powerbi.com/view?r=eyJrIjoiZDQ4YmJkYTAtNjU1ZS00ZDE4LWE5ZjEtYTA4NjA2NWRlNTRkIiwidCI6ImY5MzRlNWY3LTAwODgtNGJlZS1hN2RlLWI5ZWNjNWY2OTQxZCIsImMiOjR9" target="_blank" rel="noopener">Ver en pantalla completa</a></p>
     </section>
 <section class="content news-section" id="newsCarousel" aria-labelledby="newsTitle">
       <div class="news-heading">
@@ -1944,7 +1945,7 @@
             <div class="news-slide-copy">
               
               <h3>Modernizando nuestros grupos de generación</h3>
-              <a class="news-video-link" href="https://fonafegob-my.sharepoint.com/personal/lalarconp_electroperu_com_pe/_layouts/15/embed.aspx?UniqueId=e518ddc6-d991-4f02-942b-04ff13f8999b&amp;embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&amp;referrer=StreamWebApp&amp;referrerScenario=EmbedDialog.Create" target="_blank" rel="noopener noreferrer">Ver video de la parada del Grupo 7 ↗</a>
+              <a class="news-video-link" href="https://www.youtube.com/watch?v=CV2vzfq5yug" target="_blank" rel="noopener noreferrer">Ver video de la parada del Grupo 7 ↗</a>
             </div>
           </article>
 <article class="news-slide">
@@ -1975,7 +1976,7 @@
             <div class="news-slide-copy">
               
               <h3>Plantas de tratamiento de agua potable en operación</h3>
-              <a class="news-video-link" href="https://fonafegob-my.sharepoint.com/personal/lalarconp_electroperu_com_pe/_layouts/15/embed.aspx?UniqueId=eb87c1a2-e7e6-40ad-ab58-eaf320906098&amp;embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&amp;referrer=StreamWebApp&amp;referrerScenario=EmbedDialog.Create" target="_blank" rel="noopener noreferrer">Ver video de las PTAP ↗</a>
+              <a class="news-video-link" href="https://www.youtube.com/watch?v=ynFJo64Md2k" target="_blank" rel="noopener noreferrer">Ver video de las PTAP ↗</a>
             </div>
           </article>
 <article class="news-slide">
@@ -1986,7 +1987,7 @@
             <div class="news-slide-copy">
               
               <h3>Visita académica de la Universidad de la Costa</h3>
-              <a class="news-video-link" href="https://fonafegob-my.sharepoint.com/personal/lalarconp_electroperu_com_pe/_layouts/15/embed.aspx?UniqueId=d30730d5-0d58-43d6-860d-96d45cc7f22f&amp;embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&amp;referrer=StreamWebApp&amp;referrerScenario=EmbedDialog.Create" target="_blank" rel="noopener noreferrer">Ver video de la visita académica ↗</a>
+              <a class="news-video-link" href="https://www.youtube.com/watch?v=Unz9EVj9ey4" target="_blank" rel="noopener noreferrer">Ver video de la visita académica ↗</a>
             </div>
           </article>
 <article class="news-slide">
@@ -2061,11 +2062,10 @@
         <div class="portfolio-heading">
           <div class="eyebrow">ELECTROPERU · Gerencia de Proyectos</div>
           <h1 id="bimTitle">Gestión BIM</h1>
-          <p>Seguimiento de la gestión documental y la implementación BIM en los proyectos de ELECTROPERU.</p>
         </div>
         <div class="bim-embed">
           <div class="bim-embed-bar">
-            <span><span class="bim-dot" aria-hidden="true"></span>Dashboard BIM · actualizado por el equipo BIM</span>
+            <span><span class="bim-dot" aria-hidden="true"></span>Dashboard BIM</span>
             <a href="https://electroperu-bim-dashboard.vercel.app/pmo?footer=0" target="_blank" rel="noopener">Abrir en pantalla completa ↗</a>
           </div>
           <div class="bim-frame">
