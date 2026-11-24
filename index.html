@@ -3067,6 +3067,9 @@
       frame.style.height = (altoInformado || altoEstimado(w) + MARGEN) + 'px';
     };
     new ResizeObserver(ajustar).observe(frame);
+    window.addEventListener('resize', ajustar);
+    document.addEventListener('click', () => setTimeout(ajustar, 60));
+    ajustar();
     window.addEventListener('message', e => {
       if (!/electroperu-bim-dashboard\.vercel\.app$/.test(new URL(e.origin).hostname)) return;
       const h = Number(e.data && (e.data.height || e.data.frameHeight));
