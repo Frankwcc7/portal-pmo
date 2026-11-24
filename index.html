@@ -763,70 +763,30 @@
       font-weight: 700;
     }
     [hidden] { display: none !important; }
-    .site-footer {
-      background: #003D73;
-      color: rgba(255,255,255,.86);
-      font-size: 14px;
-      line-height: 1.6;
-    }
+    .site-footer { background: #003D73; color: rgba(255,255,255,.86); font-size: 14px; line-height: 1.6; }
     .footer-inner {
-      width: min(1280px, calc(100% - 48px));
-      margin: 0 auto;
-      padding: 44px 0 34px;
-      display: grid;
-      grid-template-columns: 1.3fr 1.2fr .8fr;
-      gap: 40px;
-      align-items: start;
+      width: min(1280px, calc(100% - 48px)); margin: 0 auto; padding: 26px 0 18px;
+      display: grid; grid-template-columns: 1.3fr 1.2fr 1fr; gap: 32px; align-items: center;
     }
-    .footer-logo {
-      display: inline-flex;
-      padding: 10px 14px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
-    }
-    .footer-logo img { display: block; height: 58px; width: auto; }
-    .footer-brand p { margin: 14px 0 0; max-width: 340px; color: rgba(255,255,255,.78); }
-    .footer-col h4 {
-      margin: 0 0 12px;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-    }
-    .footer-col p { margin: 0 0 8px; }
+    .footer-logo { display: inline-flex; border: 0 !important; }
+    .footer-logo img { display: block; height: 50px; width: auto; }
+    .footer-brand p { margin: 8px 0 0; max-width: 340px; color: rgba(255,255,255,.78); font-size: 13px; line-height: 1.5; }
+    .footer-col h4 { margin: 0 0 8px; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; }
+    .footer-col p { margin: 0 0 4px; font-size: 13.5px; }
     .footer-col a { color: #fff; border-bottom: 1px solid rgba(52,180,228,.55); }
     .footer-col a:hover { color: var(--cyan); border-color: var(--cyan); }
-    .footer-social { display: flex; gap: 12px; }
+    .footer-social { display: flex; flex-wrap: wrap; gap: 10px; }
     .footer-social a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border: 0;
-      border-radius: 50%;
-      background: rgba(255,255,255,.12);
-      color: #fff;
+      display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px;
+      border: 0; border-radius: 50%; background: rgba(255,255,255,.12); color: #fff;
       transition: background .2s ease, transform .2s ease;
     }
     .footer-social a:hover { background: var(--cyan); color: #fff; transform: translateY(-2px); }
-    .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.14);
-      padding: 16px 24px;
-      text-align: center;
-      font-size: 12.5px;
-      letter-spacing: .3px;
-      color: rgba(255,255,255,.7);
-    }
-    .sr-only {
-      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-    }
+    .footer-social svg { width: 18px; height: 18px; fill: currentColor; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.14); padding: 10px 24px; text-align: center; font-size: 12px; letter-spacing: .3px; color: rgba(255,255,255,.7); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     @media (max-width: 860px) {
-      .footer-inner { grid-template-columns: 1fr; gap: 28px; padding: 36px 0 26px; text-align: center; }
+      .footer-inner { grid-template-columns: 1fr; gap: 18px; padding: 24px 0 16px; text-align: center; }
       .footer-brand p { margin-left: auto; margin-right: auto; }
       .footer-social { justify-content: center; }
     }
@@ -1609,7 +1569,286 @@
       object-fit: contain;
       object-position: center;
       background: #fff;
-    }</style>
+    }    .news-section { padding: 36px 0 54px; }
+    .news-heading { display:flex; align-items:end; justify-content:space-between; gap:22px; margin-bottom:18px; }
+    .news-heading h2 { margin:8px 0 6px; color:var(--blue); font-size:clamp(26px,3vw,36px); }
+    .news-heading p { margin:0; color:#62788D; font-size:15px; }
+    .news-controls { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+    .news-control { min-width:44px; height:42px; padding:0 13px; border:1px solid #D6E5EF; border-radius:12px; background:#fff; color:var(--blue); font-size:22px; font-weight:700; cursor:pointer; box-shadow:0 4px 12px rgba(11,70,120,.08); }
+    .news-control:hover,.news-control:focus-visible { background:#EAF6FB; outline:2px solid #59B8E0; outline-offset:2px; }
+    .news-control.news-pause { min-width:86px; font-size:13px; }
+    .news-viewport { overflow:hidden; border:1px solid #DCE8F0; border-radius:20px; background:#F7FAFC; box-shadow:0 12px 30px rgba(14,63,103,.08); }
+    .news-track { display:flex; transition:transform .55s cubic-bezier(.22,.7,.2,1); will-change:transform; }
+    .news-slide { flex:0 0 100%; min-width:0; box-sizing:border-box; display:grid; grid-template-columns:minmax(0,1fr) minmax(230px, .36fr); align-items:center; gap:28px; padding:18px; }
+    .news-image-button { position:relative; display:grid; place-items:center; width:100%; height:clamp(280px,35vw,460px); padding:0; overflow:hidden; border:0; border-radius:14px; background:#fff; cursor:zoom-in; }
+    .news-image-button img { display:block; width:100%; height:100%; object-fit:contain; }
+    .news-zoom-hint { position:absolute; right:12px; bottom:12px; padding:8px 12px; border-radius:999px; background:rgba(0,55,101,.86); color:#fff; font-size:12px; opacity:0; transform:translateY(4px); transition:opacity .2s ease,transform .2s ease; }
+    .news-image-button:hover .news-zoom-hint,.news-image-button:focus-visible .news-zoom-hint { opacity:1; transform:translateY(0); }
+    .news-slide-copy span { color:#29A9D7; font-size:12px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; }
+    .news-slide-copy h3 { margin:10px 0 0; color:var(--blue); font-size:clamp(20px,2vw,28px); line-height:1.28; }
+    .news-footer { display:flex; align-items:center; justify-content:center; gap:12px; padding-top:14px; }
+    .news-dots { display:flex; justify-content:center; gap:8px; }
+    .news-dot { width:10px; height:10px; padding:0; border:0; border-radius:99px; background:#B7CAD8; cursor:pointer; transition:width .2s ease,background .2s ease; }
+    .news-dot[aria-current="true"] { width:26px; background:var(--cyan); }
+    .news-count { color:#657C90; font-size:12px; font-variant-numeric:tabular-nums; }
+    .news-lightbox { position:fixed; width:min(96vw,1400px); max-width:none; max-height:94vh; padding:18px; overflow:visible; border:0; border-radius:18px; background:#fff; box-shadow:0 20px 70px rgba(0,25,50,.4); }
+    .news-lightbox::backdrop { background:rgba(2,22,40,.82); }
+    .news-lightbox img { display:block; max-width:100%; max-height:82vh; margin:auto; object-fit:contain; }
+    .news-lightbox p { margin:12px 46px 0 2px; color:#164F80; font-weight:700; }
+    .news-lightbox-close { position:absolute; z-index:1; top:9px; right:9px; width:40px; height:40px; border:0; border-radius:50%; background:#075A9C; color:#fff; font-size:28px; line-height:1; cursor:pointer; }
+    @media (max-width:760px) {
+      .news-section { padding:25px 0 38px; }
+      .news-heading { align-items:start; flex-direction:column; gap:14px; }
+      .news-controls { align-self:flex-end; }
+      .news-slide { grid-template-columns:1fr; gap:15px; padding:12px; }
+      .news-image-button { height:min(60vh,480px); min-height:270px; }
+      .news-slide-copy { padding:0 4px 8px; }
+      .news-slide-copy h3 { margin-top:6px; font-size:21px; }
+      .news-lightbox { padding:12px; }
+      .news-lightbox img { max-height:82vh; }
+    }
+    @media (prefers-reduced-motion: reduce) { .news-track,.news-dot,.news-zoom-hint { transition:none !important; } }
+    /* Noticias compactas: 3 tarjetas en escritorio, 2 en tableta y 1 en móvil */
+    .news-section { padding: 28px 0 42px; }
+    .news-track { gap: 16px; }
+    .news-slide { flex: 0 0 calc((100% - 32px) / 3); display:flex; flex-direction:column; align-items:stretch; gap:12px; padding:12px; }
+    .news-image-button { height:300px; min-height:0; border:1px solid #E1EAF1; background:#fff; }
+    .news-image-button img { width:100%; height:100%; object-fit:contain; }
+    .news-slide-copy { min-height:82px; padding:0 5px 5px; }
+    .news-slide-copy h3 { font-size:20px; line-height:1.3; }
+    .news-viewport { border-radius:16px; }
+    @media (max-width:1050px) { .news-slide { flex-basis:calc((100% - 16px) / 2); } .news-image-button { height:280px; } }
+    @media (max-width:760px) {
+      .news-section { padding:24px 0 34px; }
+      .news-slide { flex-basis:100%; }
+      .news-image-button { height:min(52vh,390px); min-height:250px; }
+      .news-slide-copy { min-height:0; }
+      .news-heading { flex-direction:row; align-items:center; }
+      .news-heading p { font-size:14px; }
+      .news-controls { align-self:center; }
+      .news-control.news-pause { min-width:72px; padding:0 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .news-track { transition:none !important; } }
+    /* Ajustes finales del carrusel de noticias */
+    .news-image-button { height:300px; min-height:0; }
+    .news-image-button img { display:block; width:auto !important; height:auto !important; max-width:100%; max-height:100%; object-fit:contain !important; }
+    .news-video-link { display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:8px 11px; border-radius:999px; background:#E5F4FA; color:var(--blue); font-size:12px; font-weight:700; text-decoration:none; }
+    .news-video-link:hover,.news-video-link:focus-visible { background:#D3EDF7; text-decoration:underline; outline:2px solid #55B9E1; outline-offset:2px; }
+    @media (max-width:1050px) { .news-image-button { height:280px; } }
+    @media (max-width:760px) { .news-image-button { height:300px; } }
+    .news-slide-copy h3 { color:var(--blue) !important; }
+
+/* Gestión PMO: evolución más compacta y visual */
+#managementView .history-section { padding: clamp(18px, 2.4vw, 28px); margin-bottom: 22px; }
+#managementView .section-intro { margin: 8px 0 18px; }
+#managementView .timeline-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+#managementView .timeline-track { display: none; }
+#managementView .timeline-item { padding: 14px; border: 1px solid #DDEAF2; border-radius: 16px; background: linear-gradient(145deg, #fff, #F4FAFD); box-shadow: 0 6px 18px rgba(0,55,105,.055); transition: transform .18s ease, box-shadow .18s ease; }
+#managementView .timeline-item:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,55,105,.1); }
+#managementView .timeline-year { min-height: 31px; padding: 5px 13px; font-size: 14px; }
+#managementView .timeline-dot { display: none; }
+#managementView .timeline-card { min-height: 0; margin-top: 11px; padding: 14px; gap: 13px; border: 0; border-radius: 12px; background: #F4F9FC; }
+#managementView .timeline-icon { flex-basis: 64px; width: 64px; height: 64px; border-radius: 17px; box-shadow: inset 0 0 0 1px rgba(0,90,160,.07); }
+#managementView .timeline-icon svg { width: 46px; height: 46px; }
+#managementView .timeline-icon img { width: 52px; height: 52px; }
+#managementView .timeline-card p { font-size: 13px; line-height: 1.5; }
+#managementView .timeline-current { border-color: #9AD8EE; background: linear-gradient(145deg, #F2FBFE, #E7F5FB); }
+/* Biblioteca de documentos descargables */
+#managementView .documents-section { margin: 28px 0 10px; padding: clamp(20px, 3vw, 32px); border: 1px solid #DCE8F0; border-radius: 20px; background: linear-gradient(145deg, #F5FAFD 0%, #EAF5FA 100%); box-shadow: 0 10px 28px rgba(0,55,105,.065); }
+#managementView .documents-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:20px; }
+#managementView .documents-heading h2 { margin:0; color:var(--blue); font-size:clamp(25px,3vw,34px); }
+#managementView .documents-heading p { margin:7px 0 0; color:#5C7184; }
+#managementView .documents-controls { display:flex; gap:9px; flex-shrink:0; }
+#managementView .documents-arrow { display:grid; place-items:center; width:42px; height:42px; border:1px solid #CFE1EC; border-radius:50%; background:#fff; color:var(--blue); font-size:22px; cursor:pointer; box-shadow:0 4px 12px rgba(0,55,105,.07); }
+#managementView .documents-arrow:hover:not(:disabled) { background:var(--blue); color:#fff; }
+#managementView .documents-arrow:disabled { opacity:.4; cursor:not-allowed; }
+#managementView .documents-viewport { overflow:hidden; }
+#managementView .documents-track { display:flex; gap:16px; transition:transform .28s ease; }
+#managementView .document-card { display:flex; align-items:center; gap:18px; flex:0 0 calc((100% - 32px) / 3); min-width:0; box-sizing:border-box; padding:20px; border:1px solid #DCE8F0; border-radius:16px; background:#fff; box-shadow:0 6px 18px rgba(0,55,105,.055); }
+#managementView .document-type-icon { display:grid; place-items:center; flex:0 0 62px; width:62px; height:62px; border-radius:17px; background:#E7F5FB; color:var(--blue); }
+#managementView .document-type-icon svg { width:37px; height:37px; }
+#managementView .document-info { flex:1; min-width:0; }
+#managementView .document-info h3 { margin:0 0 7px; color:var(--blue-dark); font-size:17px; line-height:1.35; }
+#managementView .document-info p { margin:0; color:#667C8E; font-size:13px; line-height:1.5; white-space:pre-line; }
+#managementView .document-download { display:inline-flex; align-items:center; gap:8px; margin-top:13px; padding:9px 14px; border-radius:22px; background:var(--blue); color:#fff; font-size:13px; font-weight:700; text-decoration:none; }
+#managementView .document-download:hover { background:#0879B8; }
+#managementView .document-count { margin:14px 2px 0; color:#667C8E; font-size:12px; text-align:right; }
+@media (max-width: 900px) { #managementView .timeline-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } #managementView .document-card { flex-basis:calc((100% - 16px) / 2); } }
+@media (max-width: 600px) {
+  #managementView .history-section { padding:16px; }
+  #managementView .timeline-grid { grid-template-columns:1fr; gap:11px; }
+  #managementView .timeline-item { display:grid; grid-template-columns:auto 1fr; align-items:center; gap:10px; padding:11px; }
+  #managementView .timeline-year { grid-column:1; grid-row:1; }
+  #managementView .timeline-card { grid-column:2; grid-row:1; margin:0; padding:0; background:transparent; }
+  #managementView .timeline-icon { flex-basis:56px; width:56px; height:56px; }
+  #managementView .timeline-icon svg { width:42px; height:42px; }
+  #managementView .timeline-icon img { width:46px; height:46px; }
+  #managementView .timeline-card p { font-size:12px; }
+  #managementView .documents-heading { align-items:flex-start; }
+  #managementView .document-card { flex-basis:100%; padding:16px; gap:13px; }
+  #managementView .document-type-icon { flex-basis:52px; width:52px; height:52px; }
+  #managementView .document-type-icon svg { width:32px; height:32px; }
+}
+/* Organigrama PMO interactivo */
+#managementView .org-section { margin: 30px 0 24px; padding: clamp(20px,3vw,32px); border:1px solid #DCE8F0; border-radius:20px; background:#fff; box-shadow:0 10px 28px rgba(0,55,105,.06); }
+#managementView .org-heading { margin-bottom:22px; }
+#managementView .org-heading h2 { margin:0; color:var(--blue); font-size:clamp(25px,3vw,34px); }
+#managementView .org-heading p { margin:7px 0 0; color:#5C7184; }
+#managementView .org-scroll { overflow-x:auto; padding:5px 2px 14px; scrollbar-color:#9BCDE0 #EDF5F9; }
+#managementView .org-chart { min-width:760px; max-width:1120px; margin:0 auto; }
+#managementView .org-node { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; min-height:68px; padding:12px 18px; border:1px solid #C9DDE9; border-radius:14px; background:#fff; color:#355875; text-align:center; font:inherit; cursor:pointer; box-shadow:0 5px 14px rgba(0,55,105,.055); transition:transform .16s ease, border-color .16s ease, box-shadow .16s ease, background .16s ease; }
+#managementView .org-node:hover, #managementView .org-node:focus-visible { transform:translateY(-2px); border-color:#51B9DD; box-shadow:0 9px 19px rgba(0,98,158,.13); outline:none; }
+#managementView .org-node.is-selected { border:2px solid var(--blue); background:#EFF8FC; color:var(--blue-dark); box-shadow:0 0 0 4px rgba(44,174,218,.12); }
+#managementView .org-node strong { font-size:14px; line-height:1.3; }
+#managementView .org-node small { color:#72899B; font-size:11px; }
+#managementView .org-sponsor { width:min(300px,100%); margin:0 auto; border-color:#83CDE4; background:linear-gradient(135deg,#F1FAFD,#fff); }
+#managementView .org-top-connectors { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:620px; margin:0 auto; padding-top:31px; }
+#managementView .org-top-connectors::before { content:""; position:absolute; top:0; left:50%; height:18px; border-left:2px solid #9FC5D8; }
+#managementView .org-top-connectors::after { content:""; position:absolute; top:17px; left:25%; right:25%; border-top:2px solid #9FC5D8; }
+#managementView .org-top-connectors .org-node::before { content:""; position:absolute; top:-15px; left:50%; height:14px; border-left:2px solid #9FC5D8; }
+#managementView .org-top-connectors .org-node { min-height:76px; }
+#managementView .org-portfolio-grid { position:relative; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:43px; padding-top:28px; }
+#managementView .org-portfolio-grid::before { content:""; position:absolute; top:0; left:16.66%; right:16.66%; border-top:2px solid #9FC5D8; }
+#managementView .org-portfolio { position:relative; display:flex; flex-direction:column; gap:10px; padding:13px; border:1px solid #E1EBF2; border-radius:17px; background:linear-gradient(180deg,#F8FBFD,#fff); }
+#managementView .org-portfolio::before { content:""; position:absolute; left:50%; top:-29px; height:27px; border-left:2px solid #9FC5D8; }
+#managementView .org-portfolio .org-node { width:100%; min-height:61px; }
+#managementView .org-portfolio .org-owner { border-color:#99D6E8; background:#EFF9FC; }
+#managementView .org-portfolio .org-manager { border-color:#C5DCE9; }
+#managementView .org-supports { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+#managementView .org-supports .org-node { min-height:94px; padding:10px 8px; background:#F7FAFC; }
+#managementView .org-supports .org-node strong { font-size:12px; }
+#managementView .org-supports .org-node small { line-height:1.35; }
+#managementView .org-detail { display:flex; align-items:flex-start; gap:14px; max-width:1120px; margin:14px auto 0; padding:15px 17px; border-left:4px solid var(--cyan); border-radius:0 12px 12px 0; background:#F0F8FB; color:#4D687E; }
+#managementView .org-detail { padding-left:20px; }
+#managementView .org-detail strong { display:block; margin-bottom:3px; color:var(--blue-dark); }
+#managementView .org-detail p { margin:0; font-size:13px; line-height:1.5; white-space:pre-line; }
+@media(max-width:600px) { #managementView .org-section { padding:18px 14px; } #managementView .org-chart { margin-left:0; } #managementView .org-top-connectors { gap:14px; } #managementView .org-node strong { font-size:12px; } }
+#managementView .org-portfolio-grid::after { content:""; position:absolute; top:-43px; left:25%; height:43px; border-left:2px solid #9FC5D8; }
+
+/* Portafolios: tarjetas con más color, jerarquía y movimiento */
+#portfoliosView .portfolio-heading { max-width:900px; }
+#portfoliosView .portfolio-purpose { padding:20px 24px; border-left:5px solid var(--cyan); background:linear-gradient(105deg,#E7F6FB 0%,#FFFFFF 76%); }
+#portfoliosView .portfolio-grid { gap:17px; }
+#portfoliosView .portfolio-card {
+  display:grid; grid-template-columns:68px minmax(0,1fr); grid-template-rows:auto auto 1fr auto; align-items:start;
+  column-gap:15px; row-gap:6px; min-height:205px; padding:22px 21px 19px 23px;
+  border:1px solid color-mix(in srgb,var(--portfolio-accent) 22%,#E0EAF2);
+  border-left:4px solid var(--portfolio-accent);
+  border-radius:17px;
+  background:linear-gradient(135deg,var(--portfolio-tint) 0%,#fff 63%);
+  box-shadow:0 9px 22px rgba(0,55,105,.055);
+  animation:portfolioCardEnter .48s cubic-bezier(.2,.75,.25,1) both;
+}
+#portfoliosView .portfolio-card:nth-child(1) { --portfolio-accent:#0874B5; --portfolio-tint:#EAF6FB; animation-delay:.02s; }
+#portfoliosView .portfolio-card:nth-child(2) { --portfolio-accent:#16A8D3; --portfolio-tint:#E9F9FC; animation-delay:.06s; }
+#portfoliosView .portfolio-card:nth-child(3) { --portfolio-accent:#397BC0; --portfolio-tint:#EEF4FC; animation-delay:.10s; }
+#portfoliosView .portfolio-card:nth-child(4) { --portfolio-accent:#168F9A; --portfolio-tint:#EAF7F6; animation-delay:.14s; }
+#portfoliosView .portfolio-card:nth-child(5) { --portfolio-accent:#4D73C7; --portfolio-tint:#F0F2FC; animation-delay:.18s; }
+#portfoliosView .portfolio-card:nth-child(6) { --portfolio-accent:#1595C2; --portfolio-tint:#EAF7FC; animation-delay:.22s; }
+#portfoliosView .portfolio-card:nth-child(7) { --portfolio-accent:#506BAE; --portfolio-tint:#F0F3FA; animation-delay:.26s; }
+#portfoliosView .portfolio-card:nth-child(8) { --portfolio-accent:#21A2A0; --portfolio-tint:#EAF8F6; animation-delay:.30s; }
+#portfoliosView .portfolio-card:nth-child(9) { --portfolio-accent:#357DB5; --portfolio-tint:#EDF6FB; animation-delay:.34s; }
+#portfoliosView .portfolio-card:nth-child(10) { --portfolio-accent:#2C91BA; --portfolio-tint:#EAF6F9; animation-delay:.38s; }
+#portfoliosView .portfolio-card::before { content:""; position:absolute; right:0; bottom:0; width:110px; height:110px; border-radius:100% 0 0 0; background:linear-gradient(135deg,transparent,var(--portfolio-tint)); pointer-events:none; }
+#portfoliosView .portfolio-card::after { top:-16px; right:-16px; width:112px; height:112px; border-radius:50%; background:radial-gradient(circle,var(--portfolio-tint),transparent 72%); }
+#portfoliosView .portfolio-card:hover, #portfoliosView .portfolio-card:focus-visible { transform:translateY(-5px); border-color:var(--portfolio-accent); box-shadow:0 16px 30px rgba(0,55,105,.13); }
+#portfoliosView .portfolio-number { grid-column:1; grid-row:1 / span 3; align-self:start; display:grid; width:62px; height:62px; margin:1px 0 0; border-radius:50%; background:linear-gradient(145deg,var(--portfolio-accent),color-mix(in srgb,var(--portfolio-accent) 70%,#32B6DA)); color:#fff; font-size:20px; box-shadow:0 7px 15px color-mix(in srgb,var(--portfolio-accent) 25%,transparent); transition:transform .22s ease,box-shadow .22s ease; }
+#portfoliosView .portfolio-card:hover .portfolio-number, #portfoliosView .portfolio-card:focus-visible .portfolio-number { transform:scale(1.08) rotate(-5deg); box-shadow:0 10px 19px color-mix(in srgb,var(--portfolio-accent) 34%,transparent); }
+#portfoliosView .portfolio-card-title { grid-column:2; grid-row:1; align-self:center; margin:0; color:var(--blue-dark); font-size:20px; line-height:1.25; }
+#portfoliosView .portfolio-card-copy { grid-column:2; grid-row:2; margin:0; font-size:13px; line-height:1.48; }
+#portfoliosView .portfolio-card-meta { grid-column:2; grid-row:3; align-self:end; width:fit-content; max-width:100%; margin:7px 0 0; padding:6px 9px; border-radius:20px; background:var(--portfolio-tint); color:var(--portfolio-accent); font-size:11px; line-height:1.3; }
+#portfoliosView .portfolio-card-action { grid-column:2; grid-row:4; margin-top:7px; color:var(--portfolio-accent); }
+#portfoliosView .portfolio-card-action span { color:var(--portfolio-accent); }
+@keyframes portfolioCardEnter { from { opacity:0; transform:translateY(12px) scale(.985); } to { opacity:1; transform:translateY(0) scale(1); } }
+@media(max-width:600px) {
+  #portfoliosView .portfolio-card { grid-template-columns:56px minmax(0,1fr); column-gap:12px; min-height:185px; padding:17px 15px 16px 17px; }
+  #portfoliosView .portfolio-number { width:52px; height:52px; font-size:17px; }
+  #portfoliosView .portfolio-card-title { font-size:18px; }
+  #portfoliosView .portfolio-card-copy { font-size:13px; }
+}
+/* Historia PMO: fechas interactivas con la paleta corporativa */
+#managementView .history-section { border-top:5px solid #00559F; background:linear-gradient(180deg,#F6FBFE 0%,#fff 150px); }
+#managementView .section-kicker { color:#34B4E4; }
+#managementView .timeline { overflow-x:auto; overflow-y:hidden; padding:0 2px 4px; scrollbar-color:#34B4E4 #E7F1F7; }
+#managementView .timeline-grid { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:0; min-width:1000px; height:270px; box-sizing:border-box; padding:24px 8px 188px; position:relative; align-items:start; }
+#managementView .timeline-track { display:block; position:absolute; top:48px; left:5%; right:5%; height:4px; border-radius:4px; background:linear-gradient(90deg,#00559F 0%,#34B4E4 52%,#00559F 100%); opacity:1; }
+#managementView .timeline-item { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; min-width:0; padding:0 4px; border:0; border-radius:0; background:transparent; box-shadow:none; }
+#managementView .timeline-item:hover, #managementView .timeline-item:focus-within, #managementView .timeline-item.is-open { z-index:5; transform:none; box-shadow:none; }
+#managementView .timeline-year { position:relative; z-index:2; display:inline-flex; align-items:center; justify-content:center; min-width:78px; min-height:46px; margin:0; padding:7px 14px; border:3px solid #fff; border-radius:26px; background:#00559F; color:#fff; font-size:16px; font-weight:800; line-height:1; box-shadow:0 0 0 2px #00559F,0 6px 16px rgba(0,85,159,.2); cursor:pointer; transition:transform .18s ease,background .18s ease,box-shadow .18s ease; }
+#managementView .timeline-item:nth-child(even) .timeline-year { background:#34B4E4; box-shadow:0 0 0 2px #34B4E4,0 6px 16px rgba(52,180,228,.22); }
+#managementView .timeline-year:hover, #managementView .timeline-year:focus-visible, #managementView .timeline-item.is-open .timeline-year { transform:translateY(-3px) scale(1.06); background:#1A171B; box-shadow:0 0 0 3px #34B4E4,0 8px 18px rgba(0,85,159,.24); outline:none; }
+#managementView .timeline-year:focus-visible { outline:3px solid #34B4E4; outline-offset:5px; }
+#managementView .timeline-dot { display:block; position:absolute; top:40px; left:50%; z-index:1; width:14px; height:14px; border:3px solid #fff; border-radius:50%; background:#34B4E4; box-shadow:0 0 0 2px #00559F; transform:translateX(-50%); }
+#managementView .timeline-card { position:absolute; top:72px; left:50%; z-index:6; display:flex; align-items:flex-start; gap:13px; width:290px; min-height:0; margin:0; padding:16px; border:1px solid #C8E3F0; border-top:4px solid #34B4E4; border-radius:15px; background:#fff; box-shadow:0 16px 36px rgba(0,55,105,.2); box-sizing:border-box; opacity:0; visibility:hidden; pointer-events:none; transform:translate(-50%,8px) scale(.98); transition:opacity .18s ease,transform .18s ease,visibility .18s ease; }
+#managementView .timeline-item:hover .timeline-card, #managementView .timeline-item:focus-within .timeline-card, #managementView .timeline-item.is-open .timeline-card { opacity:1; visibility:visible; pointer-events:auto; transform:translate(-50%,0) scale(1); }
+#managementView .timeline-item:first-child .timeline-card { left:0; transform:translate(0,8px) scale(.98); }
+#managementView .timeline-item:first-child:hover .timeline-card, #managementView .timeline-item:first-child:focus-within .timeline-card, #managementView .timeline-item:first-child.is-open .timeline-card { transform:translate(0,0) scale(1); }
+#managementView .timeline-item:nth-last-child(-n+2) .timeline-card { left:auto; right:0; transform:translate(0,8px) scale(.98); }
+#managementView .timeline-item:nth-last-child(-n+2):hover .timeline-card, #managementView .timeline-item:nth-last-child(-n+2):focus-within .timeline-card, #managementView .timeline-item:nth-last-child(-n+2).is-open .timeline-card { transform:translate(0,0) scale(1); }
+#managementView .timeline-icon { flex:0 0 52px; width:52px; height:52px; border-radius:15px; background:#E7F5FB; color:#00559F; }
+#managementView .timeline-icon svg { width:40px; height:40px; }
+#managementView .timeline-icon img { width:46px; height:46px; }
+#managementView .timeline-card p { margin:2px 0 0; color:#1A171B; font-size:13px; line-height:1.55; }
+@media(max-width:900px) { #managementView .timeline-grid { min-width:900px; } }
+@media(max-width:600px) { #managementView .timeline-grid { min-width:820px; height:280px; padding-bottom:198px; } #managementView .timeline-year { min-width:70px; padding:7px 11px; font-size:14px; } #managementView .timeline-card { width:min(280px,calc(100vw - 54px)); } }
+/* Ajuste de una sola línea y estilo corporativo sobrio */
+#managementView .timeline { height:205px; box-sizing:border-box; overflow-x:auto; overflow-y:hidden; padding:0 2px; }
+#managementView .timeline-grid { display:flex; flex-flow:row nowrap; align-items:flex-start; justify-content:space-between; gap:0; width:max-content; min-width:100%; height:205px; min-height:0; box-sizing:border-box; padding:0 12px; position:relative; }
+#managementView .timeline-track { display:block; position:absolute; top:145px; left:6%; right:6%; height:3px; transform:none; border-radius:0; background:linear-gradient(90deg,#00559F 0%,#00559F 68%,#34B4E4 100%); opacity:1; }
+#managementView .timeline-item { position:relative; display:flex; flex:0 0 120px; flex-direction:column; align-items:center; min-width:120px; height:205px; padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; transform:none; }
+#managementView .timeline-item:last-child { flex-basis:145px; min-width:145px; }
+#managementView .timeline-dot { display:block; position:absolute; top:137px; left:50%; width:13px; height:13px; border:3px solid #fff; border-radius:50%; background:#34B4E4; box-shadow:0 0 0 2px #00559F; transform:translateX(-50%); z-index:2; }
+#managementView .timeline-year { position:absolute; top:157px; left:50%; z-index:3; display:inline-flex; align-items:center; justify-content:center; min-width:70px; min-height:32px; max-width:none; margin:0; padding:5px 9px; border:1px solid #9CBBD0; border-radius:5px; background:#fff; color:#00559F; box-shadow:none; transform:translateX(-50%); font-size:14px; font-weight:700; line-height:1.1; white-space:nowrap; cursor:pointer; transition:background .16s ease,color .16s ease,border-color .16s ease; }
+#managementView .timeline-year:hover, #managementView .timeline-year:focus-visible, #managementView .timeline-item.is-open .timeline-year { transform:translateX(-50%); border-color:#00559F; background:#00559F; color:#fff; box-shadow:0 3px 8px rgba(0,85,159,.16); outline:none; }
+#managementView .timeline-year:focus-visible { outline:3px solid #34B4E4; outline-offset:3px; }
+#managementView .timeline-item:hover, #managementView .timeline-item:focus-within, #managementView .timeline-item.is-open { z-index:8; transform:none; box-shadow:none; }
+#managementView .timeline-card { position:absolute; top:0; left:50%; z-index:8; display:flex; align-items:flex-start; gap:12px; width:275px; min-height:0; margin:0; padding:14px; border:1px solid #C8DCE9; border-top:3px solid #34B4E4; border-radius:9px; background:#fff; box-shadow:0 8px 22px rgba(0,55,105,.14); box-sizing:border-box; opacity:0; visibility:hidden; pointer-events:none; transform:translate(-50%,6px); transition:opacity .16s ease,transform .16s ease,visibility .16s ease; }
+#managementView .timeline-item:hover .timeline-card, #managementView .timeline-item:focus-within .timeline-card, #managementView .timeline-item.is-open .timeline-card { opacity:1; visibility:visible; pointer-events:auto; transform:translate(-50%,0); }
+#managementView .timeline-item:first-child .timeline-card { left:0; transform:translate(0,6px); }
+#managementView .timeline-item:first-child:hover .timeline-card, #managementView .timeline-item:first-child:focus-within .timeline-card, #managementView .timeline-item:first-child.is-open .timeline-card { transform:translate(0,0); }
+#managementView .timeline-item:nth-last-child(-n+2) .timeline-card { left:auto; right:0; transform:translate(0,6px); }
+#managementView .timeline-item:nth-last-child(-n+2):hover .timeline-card, #managementView .timeline-item:nth-last-child(-n+2):focus-within .timeline-card, #managementView .timeline-item:nth-last-child(-n+2).is-open .timeline-card { transform:translate(0,0); }
+#managementView .timeline-icon { flex:0 0 48px; width:48px; height:48px; border-radius:8px; background:#EAF5FA; color:#00559F; box-shadow:none; }
+#managementView .timeline-icon svg { width:37px; height:37px; }
+#managementView .timeline-icon img { width:43px; height:43px; }
+#managementView .timeline-card p { margin:1px 0 0; color:#1A171B; font-size:12px; line-height:1.45; }
+@media(max-width:900px) { #managementView .timeline-grid { min-width:1080px; justify-content:flex-start; } }
+@media(max-width:600px) { #managementView .timeline { height:205px; } #managementView .timeline-grid { min-width:1080px; height:205px; justify-content:flex-start; padding:0 8px; } #managementView .timeline-item { flex-basis:120px; min-width:120px; } #managementView .timeline-item:last-child { flex-basis:145px; min-width:145px; } #managementView .timeline-card { width:min(265px,calc(100vw - 48px)); } }
+/* Galería de proyectos destacados */
+#projectsView .project-gallery { margin:30px 0 12px; padding:clamp(20px,3vw,30px); border:1px solid #DCE8F0; border-radius:20px; background:linear-gradient(145deg,#F5FAFD,#EAF5FA); box-shadow:0 10px 28px rgba(0,55,105,.06); }
+#projectsView .project-gallery-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:19px; }
+#projectsView .project-gallery-heading h2 { margin:0; color:#00559F; font-size:clamp(24px,3vw,32px); }
+#projectsView .project-gallery-heading p { margin:7px 0 0; color:#5C7184; font-size:14px; }
+#projectsView .project-gallery-controls { display:flex; gap:9px; flex-shrink:0; }
+#projectsView .project-gallery-arrow { display:grid; place-items:center; width:42px; height:42px; border:1px solid #BFD8E7; border-radius:50%; background:#fff; color:#00559F; font-size:22px; cursor:pointer; box-shadow:0 4px 12px rgba(0,55,105,.07); transition:background .16s ease,color .16s ease,transform .16s ease; }
+#projectsView .project-gallery-arrow:hover:not(:disabled) { transform:translateY(-2px); background:#00559F; color:#fff; }
+#projectsView .project-gallery-arrow:disabled { opacity:.4; cursor:not-allowed; }
+#projectsView .project-gallery-viewport { overflow:hidden; }
+#projectsView .project-gallery-track { display:flex; gap:16px; transition:transform .32s ease; }
+#projectsView .project-photo-card { flex:0 0 calc((100% - 32px) / 3); min-width:0; overflow:hidden; border:1px solid #D7E5ED; border-radius:16px; background:#fff; box-shadow:0 7px 18px rgba(0,55,105,.07); }
+#projectsView .project-photo-placeholder { position:relative; display:grid; place-items:center; height:230px; overflow:hidden; background:radial-gradient(circle at 80% 18%,rgba(52,180,228,.34),transparent 28%),linear-gradient(135deg,#00559F,#087EBA 60%,#34B4E4); color:#fff; }
+#projectsView .project-photo-placeholder::before, #projectsView .project-photo-placeholder::after { content:""; position:absolute; border:1px solid rgba(255,255,255,.22); border-radius:50%; }
+#projectsView .project-photo-placeholder::before { width:260px; height:260px; right:-70px; top:-125px; }
+#projectsView .project-photo-placeholder::after { width:190px; height:190px; left:-85px; bottom:-110px; }
+#projectsView .project-placeholder-art { position:relative; z-index:1; display:grid; place-items:center; width:82px; height:82px; border:1px solid rgba(255,255,255,.55); border-radius:24px; background:rgba(255,255,255,.13); backdrop-filter:blur(4px); }
+#projectsView .project-placeholder-art svg { width:50px; height:50px; }
+#projectsView .project-placeholder-label { position:absolute; left:15px; bottom:14px; z-index:1; padding:6px 10px; border:1px solid rgba(255,255,255,.4); border-radius:20px; background:rgba(0,51,96,.32); font-size:11px; font-weight:700; letter-spacing:.3px; }
+#projectsView .project-photo-info { padding:16px 18px 18px; }
+#projectsView .project-photo-info h3 { margin:0 0 6px; color:#00559F; font-size:17px; }
+#projectsView .project-photo-info p { margin:0; color:#667C8E; font-size:13px; line-height:1.5; }
+#projectsView .project-gallery-count { margin:13px 2px 0; color:#667C8E; font-size:12px; text-align:right; }
+@media(max-width:900px) { #projectsView .project-photo-card { flex-basis:calc((100% - 16px) / 2); } }
+@media(max-width:600px) { #projectsView .project-gallery { padding:18px 14px; } #projectsView .project-gallery-heading { align-items:flex-start; } #projectsView .project-photo-card { flex-basis:100%; } #projectsView .project-photo-placeholder { height:210px; } }    .pbi-kpis { padding-top: 6px; padding-bottom: 26px; }
+    .pbi-frame {
+      position: relative; width: 100%; aspect-ratio: 1140 / 541.25;
+      overflow: hidden; border: 1px solid #DCE8F0; border-radius: 18px;
+      background: #fff; box-shadow: 0 10px 28px rgba(0,55,105,.08);
+    }
+    .pbi-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .pbi-note { margin: 10px 4px 0; color: #667C8E; font-size: 12.5px; text-align: right; }
+    .pbi-note a { color: var(--blue); font-weight: 700; }
+    @media (max-width: 760px) { .pbi-note { text-align: center; } }
+  </style>
 </head>
 <body>
   <div class="reading-progress" aria-hidden="true"><span></span></div>
@@ -1643,6 +1882,7 @@
       <img src="assets/img/banner-inicio.webp" alt="Banner de la Oficina de Gestión de Proyectos - Portal PMO, con una vista de una central hidroeléctrica.">
     </section>
 
+    
     <section class="content intro">
       <div class="eyebrow">ELECTROPERU · Gerencia de Proyectos</div>
       <h1>Conoce nuestra PMO</h1>
@@ -1652,38 +1892,121 @@
       </div>
     </section>
 
-    <section class="content stats" aria-label="Indicadores generales">
-      <article class="stat-card stat-card-portfolios">
-        <span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5zM4 7.5l8 4.5 8-4.5M12 12v9" /></svg></span>
-        <span class="stat-value">10</span>
-        <span class="stat-label">Portafolios</span>
-        <span class="stat-note">Estructura institucional</span>
-      </article>
-      <article class="stat-card">
-        <span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v15H4zM8 3.5v4M16 3.5v4M4 9.5h16M8 13h3M8 17h8" /></svg></span>
-        <span class="stat-value" id="projectCount" aria-live="polite">45</span>
-        <span class="stat-label">Proyectos</span>
-        <span class="stat-note" id="projectCountNote">Data_madre · contador = 0 · actualizado 17/11/2026</span>
-      </article>
-      <article class="stat-card">
-        <span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5M3 7V2h5M21 17v5h-5" /></svg></span>
-        <span class="stat-value" id="initiativeCount" aria-live="polite">1</span>
-        <span class="stat-label">Iniciativas</span>
-        <span class="stat-note" id="initiativeCountNote">Data_madre · contador = 1 · corte 17/11/2026</span>
-      </article>
-      <article class="stat-card">
-        <span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M7 15l4-4 3 2 6-7" /><path d="M16 6h4v4" /></svg></span>
-        <span class="stat-value">XX%</span>
-        <span class="stat-label">Avance de proyectos</span>
-        <span class="stat-note">Indicador por validar</span>
-      </article>
-      <article class="stat-card">
-        <span class="stat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3" /></svg></span>
-        <span class="stat-value">S/ XX</span>
-        <span class="stat-label">Inversión</span>
-        <span class="stat-note">Indicador por validar</span>
-      </article>
+    <section class="content pbi-kpis" aria-label="Indicadores generales">
+      <div class="pbi-frame">
+        <iframe title="Indicadores de la PMO (Power BI)" src="https://app.powerbi.com/reportEmbed?reportId=8c4a21b5-87af-4d1a-9176-c0ae7b6247fa&amp;autoAuth=true&amp;ctid=f934e5f7-0088-4bee-a7de-b9ecc5f6941d" allowfullscreen></iframe>
+      </div>
+      <p class="pbi-note">Indicadores actualizados desde Power BI · <a href="https://app.powerbi.com/reportEmbed?reportId=8c4a21b5-87af-4d1a-9176-c0ae7b6247fa&amp;autoAuth=true&amp;ctid=f934e5f7-0088-4bee-a7de-b9ecc5f6941d" target="_blank" rel="noopener">Ver en pantalla completa</a></p>
     </section>
+<section class="content news-section" id="newsCarousel" aria-labelledby="newsTitle">
+      <div class="news-heading">
+        <div>
+          <span class="eyebrow">Actualidad · Gerencia de Proyectos</span>
+          <h2 id="newsTitle">Noticias y novedades</h2>
+          <p>Avances, iniciativas y conocimiento de la PMO.</p>
+        </div>
+        <div class="news-controls" aria-label="Controles del carrusel">
+          <button type="button" class="news-control" id="newsPrev" aria-label="Noticia anterior">‹</button>
+          <button type="button" class="news-control" id="newsNext" aria-label="Siguiente noticia">›</button>
+        </div>
+      </div>
+      <div class="news-viewport" id="newsViewport" aria-roledescription="carrusel" aria-label="Noticias de la Gerencia de Proyectos">
+        <div class="news-track" id="newsTrack">
+<article class="news-slide">
+            <button class="news-image-button" type="button" aria-label="Ampliar noticia: Modernizando nuestros grupos de generación">
+              <img src="assets/img/modernizacion-de-los-grupos-de-generacion-de-la-mini.webp" data-full="assets/img/modernizacion-de-los-grupos-de-generacion-de-la.webp" alt="Flyer sobre la modernización de los grupos de generación de la central hidroeléctrica Santiago Antúnez de Mayolo." loading="lazy" decoding="async">
+              <span class="news-zoom-hint" aria-hidden="true">Ampliar imagen</span>
+            </button>
+            <div class="news-slide-copy">
+              
+              <h3>Modernizando nuestros grupos de generación</h3>
+            </div>
+          </article>
+<article class="news-slide">
+            <button class="news-image-button" type="button" aria-label="Ampliar noticia: Modernizando nuestros grupos de generación">
+              <img src="assets/img/parada-del-grupo-7-de-la-central-santiago-antune-mini.webp" data-full="assets/img/parada-del-grupo-7-de-la-central-santiago-antune.webp" alt="Flyer de la parada del Grupo 7 de la central Santiago Antúnez de Mayolo." loading="lazy" decoding="async">
+              <span class="news-zoom-hint" aria-hidden="true">Ampliar imagen</span>
+            </button>
+            <div class="news-slide-copy">
+              
+              <h3>Modernizando nuestros grupos de generación</h3>
+              <a class="news-video-link" href="https://fonafegob-my.sharepoint.com/personal/lalarconp_electroperu_com_pe/_layouts/15/embed.aspx?UniqueId=e518ddc6-d991-4f02-942b-04ff13f8999b&amp;embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&amp;referrer=StreamWebApp&amp;referrerScenario=EmbedDialog.Create" target="_blank" rel="noopener noreferrer">Ver video de la parada del Grupo 7 ↗</a>
+            </div>
+          </article>
+<article class="news-slide">
+            <button class="news-image-button" type="button" aria-label="Ampliar noticia: Retomamos los trabajos del Relleno Sanitario de Quichuas">
+              <img src="assets/img/reanudacion-de-los-trabajos-del-relleno-sanitari-mini.webp" data-full="assets/img/reanudacion-de-los-trabajos-del-relleno-sanitari.webp" alt="Flyer sobre la reanudación de los trabajos del Relleno Sanitario de Quichuas." loading="lazy" decoding="async">
+              <span class="news-zoom-hint" aria-hidden="true">Ampliar imagen</span>
+            </button>
+            <div class="news-slide-copy">
+              
+              <h3>Retomamos los trabajos del Relleno Sanitario de Quichuas</h3>
+            </div>
+          </article>
+<article class="news-slide">
+            <button class="news-image-button" type="button" aria-label="Ampliar noticia: Inspección y ensayos de los Alivios 1, 2 y 3">
+              <img src="assets/img/inspeccion-y-ensayos-de-los-alivios-1-2-y-3-de-l-mini.webp" data-full="assets/img/inspeccion-y-ensayos-de-los-alivios-1-2-y-3-de-l.webp" alt="Flyer sobre la inspección y ensayos de los Alivios 1, 2 y 3 de la Presa Tablachaca." loading="lazy" decoding="async">
+              <span class="news-zoom-hint" aria-hidden="true">Ampliar imagen</span>
+            </button>
+            <div class="news-slide-copy">
+              
+              <h3>Inspección y ensayos de los Alivios 1, 2 y 3</h3>
+            </div>
+          </article>
+          <article class="news-slide">
+            <button class="news-image-button" type="button" aria-label="Ampliar noticia: Plantas de tratamiento de agua potable en operación">
+              <img src="assets/img/puesta-en-operacion-de-las-plantas-de-tratamient-mini.webp" data-full="assets/img/puesta-en-operacion-de-las-plantas-de-tratamient.webp" alt="Flyer sobre la puesta en operación de las plantas de tratamiento de agua potable de ELECTROPERU." loading="lazy" decoding="async">
+              <span class="news-zoom-hint" aria-hidden="true">Ampliar imagen</span>
+            </button>
+            <div class="news-slide-copy">
+              
+              <h3>Plantas de tratamiento de agua potable en operación</h3>
+              <a class="news-video-link" href="https://fonafegob-my.sharepoint.com/personal/lalarconp_electroperu_com_pe/_layouts/15/embed.aspx?UniqueId=eb87c1a2-e7e6-40ad-ab58-eaf320906098&amp;embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&amp;referrer=StreamWebApp&amp;referrerScenario=EmbedDialog.Create" target="_blank" rel="noopener noreferrer">Ver video de las PTAP ↗</a>
+            </div>
+          </article>
+<article class="news-slide">
+            <button class="news-image-button" type="button" aria-label="Ampliar noticia: Visita académica de la Universidad de la Costa">
+              <img src="assets/img/visita-de-estudiantes-de-posgrado-de-la-universi-mini.webp" data-full="assets/img/visita-de-estudiantes-de-posgrado-de-la-universi.webp" alt="Flyer de la visita de estudiantes de posgrado de la Universidad de la Costa de Colombia a ELECTROPERU." loading="lazy" decoding="async">
+              <span class="news-zoom-hint" aria-hidden="true">Ampliar imagen</span>
+            </button>
+            <div class="news-slide-copy">
+              
+              <h3>Visita académica de la Universidad de la Costa</h3>
+              <a class="news-video-link" href="https://fonafegob-my.sharepoint.com/personal/lalarconp_electroperu_com_pe/_layouts/15/embed.aspx?UniqueId=d30730d5-0d58-43d6-860d-96d45cc7f22f&amp;embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&amp;referrer=StreamWebApp&amp;referrerScenario=EmbedDialog.Create" target="_blank" rel="noopener noreferrer">Ver video de la visita académica ↗</a>
+            </div>
+          </article>
+<article class="news-slide">
+            <button class="news-image-button" type="button" aria-label="Ampliar noticia: ¿Sabías que tenemos 10 portafolios institucionales?">
+              <img src="assets/img/diez-portafolios-institucionales-de-electroperu-mini.webp" data-full="assets/img/diez-portafolios-institucionales-de-electroperu.webp" alt="Infografía que presenta los diez portafolios institucionales de ELECTROPERU." loading="lazy" decoding="async">
+              <span class="news-zoom-hint" aria-hidden="true">Ampliar imagen</span>
+            </button>
+            <div class="news-slide-copy">
+              
+              <h3>¿Sabías que tenemos 10 portafolios institucionales?</h3>
+            </div>
+          </article>
+<article class="news-slide">
+            <button class="news-image-button" type="button" aria-label="Ampliar noticia: Culminó el Programa de Mentoría 2026">
+              <img src="assets/img/cierre-del-programa-de-mentoria-2026-de-la-pmo-mini.webp" data-full="assets/img/cierre-del-programa-de-mentoria-2026-de-la-pmo.webp" alt="Flyer de cierre del Programa de Mentoría 2026 de la PMO." loading="lazy" decoding="async">
+              <span class="news-zoom-hint" aria-hidden="true">Ampliar imagen</span>
+            </button>
+            <div class="news-slide-copy">
+              
+              <h3>Culminó el Programa de Mentoría 2026</h3>
+            </div>
+          </article>       </div>
+      </div>
+      <div class="news-footer">
+        <div class="news-dots" id="newsDots" role="group" aria-label="Seleccionar noticia"></div>
+        <span class="news-count" id="newsCount" aria-live="polite">1 / 5</span>
+      </div>
+      <dialog class="news-lightbox" id="newsLightbox" aria-label="Imagen de noticia ampliada">
+        <button type="button" class="news-lightbox-close" id="newsLightboxClose" aria-label="Cerrar imagen ampliada">×</button>
+        <img id="newsLightboxImage" alt="">
+        <p id="newsLightboxCaption"></p>
+      </dialog>
+    </section>
+
     </div>
 
 
@@ -1694,11 +2017,7 @@
           <h1 id="projectsTitle">Proyectos</h1>
           <p>Consulta el portafolio de proyectos y sus principales indicadores de gestión.</p>
         </div>
-        <section class="projects-dashboard" aria-labelledby="projectsDashboardTitle">
-          <div class="projects-dashboard-heading">
-            <h2 id="projectsDashboardTitle">Dashboard de proyectos</h2>
-            <p>Explora la información interactiva del portafolio.</p>
-          </div>
+        <section class="projects-dashboard" aria-label="Dashboard de proyectos">
           <div class="powerbi-frame">
             <iframe
               title="MODELO 01 - Dashboard de proyectos ELECTROPERU"
@@ -1707,6 +2026,18 @@
               loading="lazy">
             </iframe>
           </div>
+        </section>
+        <section class="project-gallery" aria-labelledby="projectGalleryTitle">
+          <div class="project-gallery-heading">
+            <div><span class="section-kicker">Proyectos que transforman</span><h2 id="projectGalleryTitle">Proyectos destacados</h2><p>Imágenes de los proyectos más relevantes de ELECTROPERU.</p></div>
+            <div class="project-gallery-controls" aria-label="Navegar fotografías de proyectos"><button class="project-gallery-arrow" type="button" data-project-prev aria-label="Fotografías anteriores">‹</button><button class="project-gallery-arrow" type="button" data-project-next aria-label="Fotografías siguientes">›</button></div>
+          </div>
+          <div class="project-gallery-viewport"><div class="project-gallery-track" data-project-track>
+            <article class="project-photo-card"><div class="project-photo-placeholder" role="img" aria-label="Espacio reservado para la fotografía del primer proyecto destacado"><div class="project-placeholder-art" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 38h38M9 38V17h7v21M20 38V10h8v28M32 38V21h7v17M5 17l7-7 6 7M20 10l4-6 6 6M32 21l7-7 4 7"/><path d="M12 23h2m9-5h3m-3 7h3m9 3h2"/></svg></div><span class="project-placeholder-label">Foto por agregar</span></div><div class="project-photo-info"><h3>Proyecto destacado 01</h3><p>Espacio reservado para una fotografía del proyecto.</p></div></article>
+            <article class="project-photo-card"><div class="project-photo-placeholder" role="img" aria-label="Espacio reservado para la fotografía del segundo proyecto destacado"><div class="project-placeholder-art" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 38h38M9 38V17h7v21M20 38V10h8v28M32 38V21h7v17M5 17l7-7 6 7M20 10l4-6 6 6M32 21l7-7 4 7"/><path d="M12 23h2m9-5h3m-3 7h3m9 3h2"/></svg></div><span class="project-placeholder-label">Foto por agregar</span></div><div class="project-photo-info"><h3>Proyecto destacado 02</h3><p>Espacio reservado para una fotografía del proyecto.</p></div></article>
+            <article class="project-photo-card"><div class="project-photo-placeholder" role="img" aria-label="Espacio reservado para la fotografía del tercer proyecto destacado"><div class="project-placeholder-art" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 38h38M9 38V17h7v21M20 38V10h8v28M32 38V21h7v17M5 17l7-7 6 7M20 10l4-6 6 6M32 21l7-7 4 7"/><path d="M12 23h2m9-5h3m-3 7h3m9 3h2"/></svg></div><span class="project-placeholder-label">Foto por agregar</span></div><div class="project-photo-info"><h3>Proyecto destacado 03</h3><p>Espacio reservado para una fotografía del proyecto.</p></div></article>
+          </div></div>
+          <p class="project-gallery-count" data-project-count>3 fotografías</p>
         </section>
       </div>
     </section>
@@ -1726,26 +2057,21 @@
           <div class="eyebrow">ELECTROPERU · Gerencia de Proyectos</div>
           <h1 id="videosTitle">Videos</h1>
         </div>
-
-        <section class="awards-video-section" aria-labelledby="videoUniCostaTitle">
-          <div class="awards-video-heading">
-            <div>
-              <span class="section-kicker">ELECTROPERU S.A.</span>
-              <h3 id="videoUniCostaTitle">ELECTROPERU recibe a estudiantes de posgrado de la Universidad de la Costa de Colombia</h3>
-            </div>
-          </div>
+        
+                <section class="awards-video-section" aria-label="Video institucional de ELECTROPERU">
           <div class="awards-video-frame">
             <iframe
-              src="https://www.youtube-nocookie.com/embed/Unz9EVj9ey4"
+              width="1059"
+              height="595"
+              src="https://www.youtube-nocookie.com/embed/Unz9EVj9ey4?si=oL_XKLZT5vgcal9b"
               title="ELECTROPERU recibe a estudiantes de posgrado de la Universidad de la Costa de Colombia"
-              loading="lazy"
+              frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen>
             </iframe>
           </div>
-        </section>
-      </div>
+        </section>      </div>
     </section>
     <section id="portfoliosView" class="portfolio-view" hidden aria-labelledby="portfolioTitle">
       <div class="content portfolio-shell">
@@ -1809,15 +2135,15 @@
               <h2 id="historyTitle">Historia y evolución de la PMO</h2>
             </div>
           </div>
-          <p class="section-intro">Un recorrido por los principales hitos en la evolución de la gestión de proyectos en ELECTROPERU.</p>
+          <p class="section-intro">Pasa el cursor sobre una fecha o selecciónala para descubrir el hito y su ícono.</p>
           
           <div class="timeline" aria-label="Línea del tiempo de la evolución de la PMO">
             <div class="timeline-track" aria-hidden="true"></div>
             <div class="timeline-grid">
               <article class="timeline-item">
-                <span class="timeline-year">2015</span>
+                <button class="timeline-year" type="button" aria-expanded="false" aria-controls="timeline-detail-1">2015</button>
                 <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-card">
+                <div class="timeline-card" id="timeline-detail-1" aria-hidden="true">
                   <span class="timeline-icon" aria-hidden="true">
                     <svg viewBox="0 0 48 48"><path d="M24 5 42 14v12c0 10-7 15-18 18C13 41 6 36 6 26V14z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/><path d="m15 24 6 6 13-14" fill="none" stroke="#34B4E4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
@@ -1826,9 +2152,9 @@
               </article>
 
               <article class="timeline-item">
-                <span class="timeline-year">2019</span>
+                <button class="timeline-year" type="button" aria-expanded="false" aria-controls="timeline-detail-2">2019</button>
                 <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-card">
+                <div class="timeline-card" id="timeline-detail-2" aria-hidden="true">
                   <span class="timeline-icon" aria-hidden="true">
                     <svg viewBox="0 0 48 48"><circle cx="24" cy="15" r="8" fill="none" stroke="currentColor" stroke-width="2.8"/><path d="M9 40c1-9 6-14 15-14s14 5 15 14" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><circle cx="37" cy="35" r="8" fill="#34B4E4" stroke="currentColor" stroke-width="2"/><path d="m33 35 3 3 5-6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
                   </span>
@@ -1837,9 +2163,9 @@
               </article>
 
               <article class="timeline-item">
-                <span class="timeline-year">2019</span>
+                <button class="timeline-year" type="button" aria-expanded="false" aria-controls="timeline-detail-3">2019</button>
                 <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-card">
+                <div class="timeline-card" id="timeline-detail-3" aria-hidden="true">
                   <span class="timeline-icon" aria-hidden="true">
                     <svg viewBox="0 0 48 48"><circle cx="24" cy="8" r="4" fill="currentColor"/><circle cx="9" cy="37" r="4" fill="#34B4E4" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="37" r="4" fill="#34B4E4" stroke="currentColor" stroke-width="1.5"/><circle cx="39" cy="37" r="4" fill="#34B4E4" stroke="currentColor" stroke-width="1.5"/><path d="M24 12v9M9 33V25h30v8M24 21v12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
@@ -1848,27 +2174,27 @@
               </article>
 
               <article class="timeline-item">
-                <span class="timeline-year">2021</span>
+                <button class="timeline-year" type="button" aria-expanded="false" aria-controls="timeline-detail-4">2021</button>
                 <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-card">
+                <div class="timeline-card" id="timeline-detail-4" aria-hidden="true">
                   <span class="timeline-icon" aria-hidden="true"><img src="assets/img/icono-hito-1.png" alt="" aria-hidden="true" loading="lazy" decoding="async" /></span>
                   <p>Contratación de la consultoría OPM3 y Gestión del Cambio e implementación de la Guía de Lecciones Aprendidas.</p>
                 </div>
               </article>
 
               <article class="timeline-item">
-                <span class="timeline-year">2022</span>
+                <button class="timeline-year" type="button" aria-expanded="false" aria-controls="timeline-detail-5">2022</button>
                 <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-card">
+                <div class="timeline-card" id="timeline-detail-5" aria-hidden="true">
                   <span class="timeline-icon" aria-hidden="true"><img src="assets/img/icono-hito-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async" /></span>
                   <p>Migración del espacio de proyectos desde Project Server a Project Online, vinculado con Power BI.</p>
                 </div>
               </article>
 
               <article class="timeline-item">
-                <span class="timeline-year">2023</span>
+                <button class="timeline-year" type="button" aria-expanded="false" aria-controls="timeline-detail-6">2023</button>
                 <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-card">
+                <div class="timeline-card" id="timeline-detail-6" aria-hidden="true">
                   <span class="timeline-icon" aria-hidden="true">
                     <svg viewBox="0 0 48 48"><path d="M24 5c-7 0-13 6-13 13 0 10 13 25 13 25s13-15 13-25c0-7-6-13-13-13Z" fill="#E5F4FB" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="18" r="4" fill="#34B4E4" stroke="currentColor" stroke-width="2"/><path d="M5 37h9m20 0h9M9 32l-4 5 4 5m30-10 4 5-4 5" fill="none" stroke="#34B4E4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
@@ -1877,18 +2203,18 @@
               </article>
 
               <article class="timeline-item">
-                <span class="timeline-year">2024</span>
+                <button class="timeline-year" type="button" aria-expanded="false" aria-controls="timeline-detail-7">2024</button>
                 <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-card">
+                <div class="timeline-card" id="timeline-detail-7" aria-hidden="true">
                   <span class="timeline-icon" aria-hidden="true"><img src="assets/img/icono-hito-3.png" alt="" aria-hidden="true" loading="lazy" decoding="async" /></span>
                   <p>Integración de herramientas tecnológicas como Planner y Power BI. Auditorías de adherencia.</p>
                 </div>
               </article>
 
               <article class="timeline-item">
-                <span class="timeline-year">2025</span>
+                <button class="timeline-year" type="button" aria-expanded="false" aria-controls="timeline-detail-8">2025</button>
                 <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-card">
+                <div class="timeline-card" id="timeline-detail-8" aria-hidden="true">
                   <span class="timeline-icon" aria-hidden="true">
                     <svg viewBox="0 0 48 48"><path d="M9 5h22l8 8v30H9z" fill="#E5F4FB" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M31 5v9h8M15 21h17M15 27h17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="30" cy="34" r="8" fill="#34B4E4" stroke="currentColor" stroke-width="2"/><path d="m26 34 3 3 5-6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
                   </span>
@@ -1897,9 +2223,9 @@
               </article>
 
               <article class="timeline-item timeline-current">
-                <span class="timeline-year">2026 – actualidad</span>
+                <button class="timeline-year" type="button" aria-expanded="false" aria-controls="timeline-detail-9">2026 – actualidad</button>
                 <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-card">
+                <div class="timeline-card" id="timeline-detail-9" aria-hidden="true">
                   <span class="timeline-icon" aria-hidden="true">
                     <svg viewBox="0 0 48 48"><circle cx="21" cy="21" r="13" fill="none" stroke="currentColor" stroke-width="3"/><path d="m31 31 10 10M14 21h14M21 14v14" fill="none" stroke="#34B4E4" stroke-width="3" stroke-linecap="round"/></svg>
                   </span>
@@ -1991,7 +2317,7 @@
             <div class="knowledge-gallery">
               <figure class="knowledge-photo">
                 <div class="knowledge-photo-frame">
-                  <img src="assets/img/foto-mentoria.webp" alt="Sesión virtual del Plan de Mentoría de la Gerencia de Proyectos de ELECTROPERU." loading="lazy">
+                  <img src="assets/img/sesion-virtual-del-plan-de-mentoria-de-la-gerenc.webp" alt="Sesión virtual del Plan de Mentoría de la Gerencia de Proyectos de ELECTROPERU." loading="lazy" decoding="async">
                 </div>
                 <figcaption>
                   <strong>Aprendizaje colaborativo</strong>
@@ -2000,7 +2326,7 @@
               </figure>
               <figure class="knowledge-photo">
                 <div class="knowledge-photo-frame">
-                  <img src="assets/img/foto-mentoria-2.webp" alt="El ingeniero Luis Rojas comparte conocimientos técnicos en una jornada de mentoría." loading="lazy">
+                  <img src="assets/img/el-ingeniero-luis-rojas-comparte-conocimientos-t.webp" alt="El ingeniero Luis Rojas comparte conocimientos técnicos en una jornada de mentoría." loading="lazy" decoding="async">
                 </div>
                 <figcaption>
                   <strong>Experiencia que se transmite</strong>
@@ -2067,7 +2393,7 @@
     
               </div>
               <div class="awards-video-frame">
-                <img class="awards-video-photo" src="assets/img/pmo-global-alliance.webp" alt="Clasificación y etapas de PMO Global Alliance en Europa y las Américas" loading="lazy">
+                <img class="awards-video-photo" src="assets/img/clasificacion-y-etapas-de-pmo-global-alliance-en.webp" alt="Clasificación y etapas de PMO Global Alliance en Europa y las Américas" loading="lazy" decoding="async">
               </div>
               
 
@@ -2075,7 +2401,41 @@
           
           </article>
         </section>
-      </div>
+        <section class="org-section" aria-labelledby="orgTitle">
+          <div class="org-heading"><span class="section-kicker">Estructura organizacional</span><h2 id="orgTitle">Organización de la PMO</h2><p>Selecciona un nodo para conocer la función de cada instancia y equipo.</p></div>
+          <div class="org-scroll" tabindex="0" aria-label="Organigrama desplazable horizontalmente">
+            <div class="org-chart">
+              <button class="org-node org-sponsor is-selected" type="button" data-org-title="Sponsor de los Portafolios" data-org-description="Patrocina la gestión de los portafolios y brinda respaldo ejecutivo para su alineamiento estratégico."><strong>Sponsor de los Portafolios</strong><small>Patrocinio ejecutivo</small></button>
+              <div class="org-top-connectors">
+                <button class="org-node" type="button" data-org-title="Oficina de Gestión de Proyectos (PMO) Institucional" data-org-description="Articula la gestión de portafolios, programas y proyectos, y facilita metodologías, seguimiento y soporte institucional."><strong>Oficina de Gestión de Proyectos (PMO)</strong><small>Institucional</small></button>
+                <button class="org-node" type="button" data-org-title="Comité de Dirección de Portafolios" data-org-description="Instancia de dirección para revisar los portafolios y apoyar las decisiones de priorización y gestión."><strong>Comité de Dirección de Portafolios</strong><small>Dirección y priorización</small></button>
+              </div>
+              <div class="org-portfolio-grid" aria-label="Responsables y equipos de los portafolios">
+                <article class="org-portfolio">
+                  <button class="org-node org-owner" type="button" data-org-title="Responsable de Portafolio 1" data-org-description="Conduce el portafolio 1 y articula a su gestor con los equipos técnicos y de soporte."><strong>Responsable de Portafolio 1</strong></button>
+                  <button class="org-node org-manager" type="button" data-org-title="Gestor del Portafolio 1" data-org-description="Coordina la gestión cotidiana del portafolio y el trabajo de los equipos asignados."><strong>Gestor del Portafolio</strong></button>
+                  <div class="org-supports"><button class="org-node" type="button" data-org-title="Equipo Técnico del Portafolio 1" data-org-description="Aporta conocimiento técnico para la planificación y ejecución de los proyectos del portafolio."><strong>Equipo Técnico</strong><small>del Portafolio</small></button><button class="org-node" type="button" data-org-title="Soportes Técnicos del Portafolio 1" data-org-description="Brinda soporte técnico y contribuye al control documentario del portafolio."><strong>Soportes Técnicos</strong><small>del Portafolio / Control Documentario</small></button></div>
+                </article>
+                <article class="org-portfolio">
+                  <button class="org-node org-owner" type="button" data-org-title="Responsable de Portafolio 2" data-org-description="Conduce el portafolio 2 y articula a su gestor con los equipos técnicos y de soporte."><strong>Responsable de Portafolio 2</strong></button>
+                  <button class="org-node org-manager" type="button" data-org-title="Gestor del Portafolio 2" data-org-description="Coordina la gestión cotidiana del portafolio y el trabajo de los equipos asignados."><strong>Gestor del Portafolio</strong></button>
+                  <div class="org-supports"><button class="org-node" type="button" data-org-title="Equipo Técnico del Portafolio 2" data-org-description="Aporta conocimiento técnico para la planificación y ejecución de los proyectos del portafolio."><strong>Equipo Técnico</strong><small>del Portafolio</small></button><button class="org-node" type="button" data-org-title="Soportes Técnicos del Portafolio 2" data-org-description="Brinda soporte técnico y contribuye al control documentario del portafolio."><strong>Soportes Técnicos</strong><small>del Portafolio / Control Documentario</small></button></div>
+                </article>
+                <article class="org-portfolio">
+                  <button class="org-node org-owner" type="button" data-org-title="Responsable de Portafolio n" data-org-description="Representa a los demás portafolios de la organización. La estructura puede replicarse para cada uno de ellos."><strong>Responsable de Portafolio n</strong></button>
+                  <button class="org-node org-manager" type="button" data-org-title="Gestor del Portafolio n" data-org-description="Coordina la gestión cotidiana del portafolio y el trabajo de los equipos asignados."><strong>Gestor del Portafolio</strong></button>
+                  <div class="org-supports"><button class="org-node" type="button" data-org-title="Equipo Técnico del Portafolio n" data-org-description="Aporta conocimiento técnico para la planificación y ejecución de los proyectos del portafolio."><strong>Equipo Técnico</strong><small>del Portafolio</small></button><button class="org-node" type="button" data-org-title="Soportes Técnicos del Portafolio n" data-org-description="Brinda soporte técnico y contribuye al control documentario del portafolio."><strong>Soportes Técnicos</strong><small>del Portafolio / Control Documentario</small></button></div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="org-detail" aria-live="polite"><div><strong data-org-detail-title>Sponsor de los Portafolios</strong><p data-org-detail-description>Patrocina la gestión de los portafolios y brinda respaldo ejecutivo para su alineamiento estratégico.</p></div></div>
+        </section>        <section class="documents-section" aria-labelledby="documentsTitle">
+          <div class="documents-heading"><div><span class="section-kicker">Biblioteca PMO</span><h2 id="documentsTitle">Documentos</h2><p>Manuales y recursos descargables para la gestión de proyectos.</p></div><div class="documents-controls" aria-label="Navegar documentos"><button class="documents-arrow" type="button" data-doc-prev aria-label="Documentos anteriores">‹</button><button class="documents-arrow" type="button" data-doc-next aria-label="Documentos siguientes">›</button></div></div>
+          <div class="documents-viewport"><div class="documents-track" data-doc-track>
+            <article class="document-card"><div class="document-type-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h18l9 9v29H11z"/><path d="M29 5v10h9M17 24h15M17 30h15M17 36h10"/><path d="M7 10v32h27"/></svg></div><div class="document-info"><h3>Manual para la Gestión de Portafolios, Programas y Proyectos</h3><p>Versión 06 · PDF · 226 páginas</p><a class="document-download" href="documentos/Manual-portafolios.pdf" download="Manual-portafolios.pdf"><span>Descargar manual</span><span aria-hidden="true">↓</span></a></div></article>
+          </div></div><p class="document-count" data-doc-count>1 documento</p>
+        </section>      </div>
     </section>
 
   </main>
@@ -2084,7 +2444,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <a class="footer-logo go-home" href="#inicio" title="Ir al inicio" aria-label="ELECTROPERU - Ir al inicio">
-          <img src="assets/img/logo-electroperu.jpg" alt="ELECTROPERU - La energía de los peruanos" loading="lazy" decoding="async">
+          <img src="assets/img/logo-electroperu-blanco.png" alt="ELECTROPERU - La energía de los peruanos" width="230" height="123" loading="lazy" decoding="async">
         </a>
         <p>Gerencia de Proyectos · Oficina de Gestión de Proyectos (PMO). Conectamos estrategia, generando valor.</p>
       </div>
@@ -2098,7 +2458,9 @@
         <h4>Síguenos</h4>
         <div class="footer-social">
           <a href="https://www.facebook.com/ElectroperuOficial" target="_blank" rel="noopener" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4V10.5H8v3h2.4V21h3.1z"/></svg><span class="sr-only">Facebook de ELECTROPERU</span></a>
+          <a href="https://www.instagram.com/electroperu_s.a/" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM12 4.6c2.4 0 2.7 0 3.6.1 2.4.1 3.6 1.3 3.7 3.7.1.9.1 1.2.1 3.6s0 2.7-.1 3.6c-.1 2.4-1.3 3.6-3.7 3.7-.9.1-1.2.1-3.6.1s-2.7 0-3.6-.1c-2.4-.1-3.6-1.3-3.7-3.7-.1-.9-.1-1.2-.1-3.6s0-2.7.1-3.6c.1-2.4 1.3-3.6 3.7-3.7.9-.1 1.2-.1 3.6-.1zM12 3c-2.4 0-2.8 0-3.7.1-3.3.2-5 2-5.2 5.2C3 9.2 3 9.6 3 12s0 2.8.1 3.7c.2 3.3 2 5 5.2 5.2.9.1 1.3.1 3.7.1s2.8 0 3.7-.1c3.3-.2 5-2 5.2-5.2.1-.9.1-1.3.1-3.7s0-2.8-.1-3.7c-.2-3.3-2-5-5.2-5.2C14.8 3 14.4 3 12 3z"/></svg><span class="sr-only">Instagram de ELECTROPERU</span></a>
           <a href="https://www.linkedin.com/company/electroperu" target="_blank" rel="noopener" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3.3 9h3.4v11.5H3.3V9zm5.6 0h3.3v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3h-3.4v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H8.9V9z"/></svg><span class="sr-only">LinkedIn de ELECTROPERU</span></a>
+          <a href="https://www.tiktok.com/@electroperu_sa" target="_blank" rel="noopener" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.2 1.6 3.6 3.9 3.8v2.6c-1.4.1-2.6-.3-3.9-1.1v5.3c0 3.6-2.6 5.9-5.8 5.9-3.1 0-5.6-2.4-5.6-5.5 0-3.4 2.9-5.9 6.5-5.4v2.8c-1.8-.4-3.5.7-3.5 2.6 0 1.5 1.2 2.6 2.7 2.6 1.6 0 2.8-1.1 2.8-3.2V3h2.9z"/></svg><span class="sr-only">TikTok de ELECTROPERU</span></a>
           <a href="https://www.youtube.com/channel/UCuWO4T1Kop-e6vq9gehYQhg" target="_blank" rel="noopener" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.6 2.6 0 0 0-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8a2.6 2.6 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3-5.2 3z"/></svg><span class="sr-only">YouTube de ELECTROPERU</span></a>
         </div>
       </div>
@@ -2397,32 +2759,12 @@
     updateHeroFade();
 
 </script>
-<script>
-  // Clic en el logo de ELECTROPERU: vuelve a la página de Inicio.
-  (function () {
-    const inicio = document.querySelector('nav a[data-page="inicio"]');
-    const year = document.getElementById('footerYear');
-    if (year) year.textContent = Math.max(2026, new Date().getFullYear());
-    if (!inicio) return;
-    const irAlInicio = e => {
-      if (e) e.preventDefault();
-      inicio.click();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-    document.querySelectorAll('.electro-logo, .go-home').forEach(el => {
-      el.addEventListener('click', irAlInicio);
-      el.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') irAlInicio(e);
-      });
-    });
-  })();
-</script>
 <button class="back-to-top" id="backToTop" type="button" aria-label="Volver al inicio" title="Volver al inicio">↑</button>
 <script>
   // Integración dinámica: configura aquí la URL de un endpoint seguro que lea Data_madre
   // y responda JSON con { "projectCount": 45, "initiativeCount": 1, "updatedAt": "2026-11-17T18:00:00Z" }.
   // El endpoint puede implementarse con Power Automate / una función de backend. No pongas credenciales en este HTML.
-  const PMO_COUNTS_ENDPOINT = "kpi.json"; // generado por GitHub Actions desde Data_madre
+  const PMO_COUNTS_ENDPOINT = ""; // desactivado: los indicadores ahora vienen de Power BI
   const PMO_COUNTS_REFRESH_MS = 60 * 1000; // revisa kpi.json cada minuto
   const countElements = {
     projects: document.getElementById("projectCount"),
@@ -2458,6 +2800,216 @@
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") refreshPmoCounts();
   });
+    (() => {
+      const section = document.getElementById('newsCarousel');
+      if (!section) return;
+      const track = document.getElementById('newsTrack');
+      const slides = [...track.querySelectorAll('.news-slide')];
+      const dots = document.getElementById('newsDots');
+      const count = document.getElementById('newsCount');
+      const prev = document.getElementById('newsPrev');
+      const next = document.getElementById('newsNext');
+      const dialog = document.getElementById('newsLightbox');
+      const lightboxImage = document.getElementById('newsLightboxImage');
+      const lightboxCaption = document.getElementById('newsLightboxCaption');
+      const closeLightbox = document.getElementById('newsLightboxClose');
+      let activeIndex = 0;
+      let timer = null;
+      let userPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let pointerInside = false;
+      let focusInside = false;
+      const visibleCount = () => window.matchMedia('(max-width: 760px)').matches ? 1 : (window.matchMedia('(max-width: 1050px)').matches ? 2 : 3);
+      const pageCount = () => Math.max(1, slides.length - visibleCount() + 1);
+
+      function syncAutoplay() {
+        window.clearInterval(timer);
+        if (!userPaused && !pointerInside && !focusInside && !dialog.open && !document.hidden) {
+          timer = window.setInterval(() => show(activeIndex + 1), 6000);
+        }
+      }
+      function renderDots() {
+        dots.replaceChildren();
+        for (let i = 0; i < pageCount(); i++) {
+          const dot = document.createElement('button');
+          const last = Math.min(i + visibleCount(), slides.length);
+          dot.type = 'button'; dot.className = 'news-dot';
+          dot.setAttribute('aria-label', `Mostrar noticias ${i + 1} a ${last}`);
+          dot.setAttribute('aria-current', String(i === activeIndex));
+          dot.addEventListener('click', () => show(i));
+          dots.appendChild(dot);
+        }
+      }
+      function show(index) {
+        const pages = pageCount();
+        activeIndex = ((index % pages) + pages) % pages;
+        const gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+        const step = slides[0].getBoundingClientRect().width + gap;
+        track.style.transform = `translateX(-${activeIndex * step}px)`;
+        [...dots.children].forEach((dot, i) => dot.setAttribute('aria-current', String(i === activeIndex)));
+        const last = Math.min(activeIndex + visibleCount(), slides.length);
+        count.textContent = `${activeIndex + 1}–${last} de ${slides.length}`;
+        syncAutoplay();
+      }
+      slides.forEach(slide => {
+        slide.querySelector('.news-image-button').addEventListener('click', () => {
+          const image = slide.querySelector('img');
+          lightboxImage.src = image.dataset.full || image.src;
+          lightboxImage.alt = image.alt;
+          lightboxCaption.textContent = slide.querySelector('h3').textContent;
+          dialog.showModal(); syncAutoplay();
+        });
+      });
+      prev.addEventListener('click', () => show(activeIndex - 1));
+      next.addEventListener('click', () => show(activeIndex + 1));
+      closeLightbox.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+      dialog.addEventListener('close', syncAutoplay);
+      section.addEventListener('pointerenter', () => { pointerInside = true; syncAutoplay(); });
+      section.addEventListener('pointerleave', () => { pointerInside = false; syncAutoplay(); });
+      section.addEventListener('focusin', () => { focusInside = true; syncAutoplay(); });
+      section.addEventListener('focusout', event => { if (!section.contains(event.relatedTarget)) { focusInside = false; syncAutoplay(); } });
+      document.addEventListener('visibilitychange', syncAutoplay);
+      window.addEventListener('resize', () => { renderDots(); show(activeIndex); });
+      renderDots(); show(0);
+    })();;;
+</script>
+<script>
+(() => {
+  const section = document.querySelector('#managementView .documents-section');
+  if (!section) return;
+  const track = section.querySelector('[data-doc-track]');
+  const prev = section.querySelector('[data-doc-prev]');
+  const next = section.querySelector('[data-doc-next]');
+  const count = section.querySelector('[data-doc-count]');
+  const cards = Array.from(track.children);
+  let index = 0;
+  const visible = () => window.matchMedia('(max-width: 600px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
+  const update = () => {
+    const perPage = visible();
+    const max = Math.max(0, cards.length - perPage);
+    index = Math.min(index, max);
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    const cardWidth = cards[0]?.getBoundingClientRect().width || 0;
+    track.style.transform = `translateX(-${index * (cardWidth + gap)}px)`;
+    prev.disabled = index === 0;
+    next.disabled = index >= max;
+    count.textContent = `${cards.length} ${cards.length === 1 ? 'documento' : 'documentos'}`;
+  };
+  prev.addEventListener('click', () => { index = Math.max(0, index - visible()); update(); });
+  next.addEventListener('click', () => { index = Math.min(Math.max(0, cards.length - visible()), index + visible()); update(); });
+  window.addEventListener('resize', update);
+  if ('ResizeObserver' in window) new ResizeObserver(update).observe(section);
+  update();
+})();
+</script><script>
+(() => {
+  const section = document.querySelector('#managementView .org-section');
+  if (!section) return;
+  const title = section.querySelector('[data-org-detail-title]');
+  const description = section.querySelector('[data-org-detail-description]');
+  const roleDescriptions = {
+    sponsor: 'Representado por el Gerente General. Proporciona recursos y apoyo institucional para la gestión de los portafolios. Preside el Comité de Dirección de Portafolios, promueve la aprobación de sus componentes y responde por el éxito final del portafolio. Aprueba la creación, modificación o cierre de portafolios estratégicos y las decisiones estratégicas propuestas por el Comité. Es la máxima instancia de respaldo para implementar y mejorar continuamente la Gestión de Portafolios.',
+    committee: 'Conformado por los Gerentes y líderes de los portafolios. Evalúa el desempeño de los portafolios y su alineamiento con la estrategia institucional. Revisa y aprueba la priorización y el balanceo de iniciativas, aprueba incorporaciones, reasigna recursos, gestiona riesgos críticos y toma decisiones estratégicas.',
+    pmo: 'Equipo liderado por la Gerencia de Proyectos e integrado por el Gerente de Proyectos, la Subgerencia de Investigación de Proyectos, la Subgerencia de Desarrollo de Proyectos y el Analista PMO. Actúa como Secretaría Técnica del Comité y articula la gestión integral de portafolios, programas y proyectos institucionales. Establece y mantiene metodologías, estándares, lineamientos, herramientas e indicadores; monitorea objetivos estratégicos, emite reportes y facilita la priorización y el balanceo. También brinda soporte, asesoramiento, acompañamiento metodológico, monitoreo, integración de información y fortalecimiento de capacidades para asegurar el funcionamiento adecuado, la mejora continua y la generación de valor.',
+    owner: 'Tiene a su cargo la gestión integral del portafolio y asegura su alineamiento con los objetivos estratégicos institucionales. Supervisa el desempeño y el cumplimiento de objetivos, indicadores, beneficios y metas; identifica riesgos y oportunidades, propone acciones de mitigación y reporta periódicamente el estado del portafolio mediante informes ejecutivos coordinados con la PMO.',
+    manager: 'Coordina y facilita la gestión operativa del portafolio, apoyando al Responsable en el cumplimiento de objetivos, metas y beneficios. Participa en la identificación, evaluación, selección, priorización y seguimiento de iniciativas. Monitorea desviaciones, riesgos, dependencias y oportunidades de mejora; coordina la recopilación de información y el seguimiento de indicadores, riesgos y beneficios, y reporta hallazgos relevantes al Responsable y a la PMO Institucional.',
+    technical: 'Instancia de apoyo especializada, conformada por representantes del área involucrada. El Responsable o Gestor la convoca cuando la gestión, evaluación, priorización o seguimiento de los componentes requiere conocimientos técnicos específicos. Su composición puede variar según las necesidades del portafolio y los asuntos que se analicen.',
+    support: 'Soportes Técnicos del Portafolio: colaboran en la gestión técnica de forma transversal a todos los programas y proyectos del portafolio.\n\nControl Documentario: brinda soporte transversal en la organización, gestión y control de la documentación asociada a los componentes del portafolio.'
+  };
+  const descriptionFor = role => {
+    if (role === 'Sponsor de los Portafolios') return roleDescriptions.sponsor;
+    if (role === 'Comité de Dirección de Portafolios') return roleDescriptions.committee;
+    if (role.startsWith('Oficina de Gestión')) return roleDescriptions.pmo;
+    if (role.startsWith('Responsable de Portafolio')) return roleDescriptions.owner;
+    if (role.startsWith('Gestor del Portafolio')) return roleDescriptions.manager;
+    if (role.startsWith('Equipo Técnico')) return roleDescriptions.technical;
+    if (role.startsWith('Soportes Técnicos')) return roleDescriptions.support;
+    return '';
+  };
+  const nodes = section.querySelectorAll('[data-org-title]');
+  const select = node => {
+    nodes.forEach(item => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });
+    node.classList.add('is-selected');
+    node.setAttribute('aria-pressed', 'true');
+    title.textContent = node.dataset.orgTitle;
+    description.textContent = descriptionFor(node.dataset.orgTitle);
+  };
+  nodes.forEach(node => {
+    node.setAttribute('aria-pressed', node.classList.contains('is-selected') ? 'true' : 'false');
+    node.addEventListener('click', () => select(node));
+  });
+  const initial = section.querySelector('.org-node.is-selected') || nodes[0];
+  if (initial) select(initial);
+})();
+</script><script>
+(() => {
+  const section = document.querySelector('#managementView .history-section');
+  if (!section) return;
+  section.querySelectorAll('.timeline-item').forEach((item, index) => {
+    const date = item.querySelector('.timeline-year');
+    const details = item.querySelector('.timeline-card');
+    if (!date || !details) return;
+    if (!details.id) details.id = `timeline-detail-${index + 1}`;
+    date.setAttribute('aria-controls', details.id);
+    const update = () => {
+      const active = item.matches(':hover, :focus-within') || item.classList.contains('is-open');
+      details.setAttribute('aria-hidden', String(!active));
+      date.setAttribute('aria-expanded', String(item.classList.contains('is-open')));
+    };
+    date.addEventListener('click', () => { item.classList.toggle('is-open'); update(); });
+    item.addEventListener('mouseenter', update);
+    item.addEventListener('mouseleave', update);
+    item.addEventListener('focusin', update);
+    item.addEventListener('focusout', () => requestAnimationFrame(update));
+  });
+})();
+</script><script>
+(() => {
+  const section = document.querySelector('#projectsView .project-gallery');
+  if (!section) return;
+  const track = section.querySelector('[data-project-track]');
+  const prev = section.querySelector('[data-project-prev]');
+  const next = section.querySelector('[data-project-next]');
+  const count = section.querySelector('[data-project-count]');
+  const cards = Array.from(track.children);
+  let index = 0;
+  const visible = () => window.matchMedia('(max-width: 600px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
+  const update = () => {
+    const perPage = visible();
+    const max = Math.max(0, cards.length - perPage);
+    index = Math.min(index, max);
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    const width = cards[0]?.getBoundingClientRect().width || 0;
+    track.style.transform = `translateX(-${index * (width + gap)}px)`;
+    prev.disabled = index === 0;
+    next.disabled = index >= max;
+    count.textContent = `${cards.length} ${cards.length === 1 ? 'fotografía' : 'fotografías'}`;
+  };
+  prev.addEventListener('click', () => { index = Math.max(0, index - visible()); update(); });
+  next.addEventListener('click', () => { index = Math.min(Math.max(0, cards.length - visible()), index + visible()); update(); });
+  window.addEventListener('resize', update);
+  if ('ResizeObserver' in window) new ResizeObserver(update).observe(section);
+  update();
+})();
+</script><script>
+  // Logo del encabezado y del pie: vuelven al Inicio. El año del pie se mantiene al día.
+  (function () {
+    const inicio = document.querySelector('nav a[data-page="inicio"]');
+    const year = document.getElementById('footerYear');
+    if (year) year.textContent = Math.max(2026, new Date().getFullYear());
+    if (!inicio) return;
+    const irAlInicio = e => {
+      if (e) e.preventDefault();
+      inicio.click();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    document.querySelectorAll('.electro-logo, .go-home').forEach(el => {
+      el.addEventListener('click', irAlInicio);
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') irAlInicio(e);
+      });
+    });
+  })();
 </script>
 </body>
 </html>
