@@ -1864,10 +1864,11 @@
     }
     .bim-embed-bar a { color: var(--blue); font-weight: 700; }
     .bim-dot { display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: #2BB673; vertical-align: 1px; }
-    .bim-frame { position: relative; height: max(640px, 82vh); background: #F6FAFD; }
-    .bim-frame iframe { position: relative; z-index: 1; display: block; width: 100%; height: 100%; border: 0; }
+    .bim-frame { position: relative; background: #F6FAFD; }
+    /* Sin desplazamiento interno: el alto del iframe se ajusta al contenido y se baja con la barra de la página. */
+    .bim-frame iframe { position: relative; z-index: 1; display: block; width: 100%; height: 2650px; border: 0; overflow: hidden; }
     .bim-loading { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: #8095A8; font-size: 14px; }
-    @media (max-width: 760px) { .bim-frame { height: 78vh; } .bim-embed-bar { justify-content: center; text-align: center; } }
+    @media (max-width: 760px) { .bim-embed-bar { justify-content: center; text-align: center; } }
   </style>
 </head>
 <body>
@@ -2076,7 +2077,7 @@
           </div>
           <div class="bim-frame">
             <p class="bim-loading">Cargando dashboard BIM…</p>
-            <iframe title="Dashboard de Gestión BIM de ELECTROPERU" src="https://electroperu-bim-dashboard.vercel.app/pmo?footer=0" loading="lazy" allowfullscreen></iframe>
+            <iframe id="bimFrame" title="Dashboard de Gestión BIM de ELECTROPERU" src="https://electroperu-bim-dashboard.vercel.app/pmo?footer=0" scrolling="no" loading="lazy" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -3038,6 +3039,38 @@
       el.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') irAlInicio(e);
       });
+    });
+  })();
+</script>
+<script>
+  // Dashboard BIM: el iframe toma el alto de su contenido para que la página se desplace con su propia barra.
+  // Alturas medidas del dashboard según el ancho (24/11/2026). Si el dashboard envía su alto por postMessage, se usa ese.
+  (function () {
+    const frame = document.getElementById('bimFrame');
+    if (!frame) return;
+    const MEDIDAS = [[360, 4194], [420, 3869], [494, 3589], [600, 3177], [700, 3358], [721, 3266], [768, 3447],
+                     [900, 3454], [1000, 3452], [1024, 2721], [1081, 2651], [1100, 2623], [1180, 2607]];
+    const MARGEN = 40;
+    let altoInformado = 0;
+    const altoEstimado = w => {
+      if (w <= MEDIDAS[0][0]) return MEDIDAS[0][1] + (MEDIDAS[0][0] - w) * 6;
+      if (w >= MEDIDAS[MEDIDAS.length - 1][0]) return MEDIDAS[MEDIDAS.length - 1][1];
+      for (let i = 1; i < MEDIDAS.length; i++) {
+        const [w0, h0] = MEDIDAS[i - 1], [w1, h1] = MEDIDAS[i];
+        if (w <= w1) return (w0 === 1000 && w < 1024) ? 3460 : Math.max(h0, h1);
+      }
+      return 2700;
+    };
+    const ajustar = () => {
+      const w = frame.clientWidth;
+      if (!w) return;
+      frame.style.height = (altoInformado || altoEstimado(w) + MARGEN) + 'px';
+    };
+    new ResizeObserver(ajustar).observe(frame);
+    window.addEventListener('message', e => {
+      if (!/electroperu-bim-dashboard\.vercel\.app$/.test(new URL(e.origin).hostname)) return;
+      const h = Number(e.data && (e.data.height || e.data.frameHeight));
+      if (h > 200) { altoInformado = Math.ceil(h); ajustar(); }
     });
   })();
 </script>
