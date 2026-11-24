@@ -1841,14 +1841,14 @@
 @media(max-width:600px) { #projectsView .project-gallery { padding:18px 14px; } #projectsView .project-gallery-heading { align-items:flex-start; } #projectsView .project-photo-card { flex-basis:100%; } #projectsView .project-photo-placeholder { height:210px; } }    .pbi-kpis { padding-top: 6px; padding-bottom: 26px; }
     /* Solo se muestra la franja de KPI del informe de Power BI (16:9).
        El iframe ocupa el ancho del recuadro; su alto = ancho × 9/16 + barra inferior de Power BI (~58 px).
-       El recuadro deja ver solo la banda entre el 36,8 % y el 63,2 % del alto del informe. */
+       El recuadro deja ver solo la banda entre el 37,8 % y el 62,0 % del alto del informe. */
     .pbi-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 16px; }
     .pbi-frame {
       container-type: inline-size; position: relative; width: 100%; min-width: 760px;
-      aspect-ratio: 1 / 0.1485; overflow: hidden; border-radius: 16px;
+      aspect-ratio: 1 / 0.1361; overflow: hidden; border-radius: 16px;
     }
     .pbi-frame iframe {
-      position: absolute; left: 0; top: -20.7cqw; width: 100%;
+      position: absolute; left: 0; top: -21.26cqw; width: 100%;
       height: calc(56.25cqw + 58px); border: 0;
     }
     .pbi-note { margin: 8px 4px 0; color: #8095A8; font-size: 12px; text-align: right; }
@@ -1917,7 +1917,6 @@
           <iframe title="Indicadores de la PMO (Power BI)" src="https://app.powerbi.com/view?r=eyJrIjoiZDQ4YmJkYTAtNjU1ZS00ZDE4LWE5ZjEtYTA4NjA2NWRlNTRkIiwidCI6ImY5MzRlNWY3LTAwODgtNGJlZS1hN2RlLWI5ZWNjNWY2OTQxZCIsImMiOjR9" scrolling="no" tabindex="-1"></iframe>
         </div>
       </div>
-      <p class="pbi-note">Indicadores actualizados desde Power BI</p>
     </section>
 <section class="content news-section" id="newsCarousel" aria-labelledby="newsTitle">
       <div class="news-heading">
