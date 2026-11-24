@@ -1839,15 +1839,19 @@
 #projectsView .project-gallery-count { margin:13px 2px 0; color:#667C8E; font-size:12px; text-align:right; }
 @media(max-width:900px) { #projectsView .project-photo-card { flex-basis:calc((100% - 16px) / 2); } }
 @media(max-width:600px) { #projectsView .project-gallery { padding:18px 14px; } #projectsView .project-gallery-heading { align-items:flex-start; } #projectsView .project-photo-card { flex-basis:100%; } #projectsView .project-photo-placeholder { height:210px; } }    .pbi-kpis { padding-top: 6px; padding-bottom: 26px; }
+    /* Solo se muestra la franja de KPI del informe de Power BI (16:9).
+       El iframe ocupa el ancho del recuadro; su alto = ancho × 9/16 + barra inferior de Power BI (~58 px).
+       El recuadro deja ver solo la banda entre el 36,8 % y el 63,2 % del alto del informe. */
+    .pbi-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 16px; }
     .pbi-frame {
-      position: relative; width: 100%; aspect-ratio: 16 / 9;
-      overflow: hidden; border: 1px solid #DCE8F0; border-radius: 18px;
-      background: #fff; box-shadow: 0 10px 28px rgba(0,55,105,.08);
+      container-type: inline-size; position: relative; width: 100%; min-width: 760px;
+      aspect-ratio: 1 / 0.1485; overflow: hidden; border-radius: 16px;
     }
-    /* El iframe es 36 px más alto que el recuadro para ocultar la barra inferior de Power BI. */
-    .pbi-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: calc(100% + 36px); border: 0; }
-    .pbi-note { margin: 10px 4px 0; color: #667C8E; font-size: 12.5px; text-align: right; }
-    .pbi-note a { color: var(--blue); font-weight: 700; }
+    .pbi-frame iframe {
+      position: absolute; left: 0; top: -20.7cqw; width: 100%;
+      height: calc(56.25cqw + 58px); border: 0;
+    }
+    .pbi-note { margin: 8px 4px 0; color: #8095A8; font-size: 12px; text-align: right; }
     @media (max-width: 760px) { .pbi-note { text-align: center; } }
       .bim-embed {
       margin-top: 22px; overflow: hidden; background: #fff;
@@ -1908,10 +1912,12 @@
     </section>
 
     <section class="content pbi-kpis" aria-label="Indicadores generales">
-      <div class="pbi-frame">
-        <iframe title="Indicadores de la PMO (Power BI)" src="https://app.powerbi.com/view?r=eyJrIjoiZDQ4YmJkYTAtNjU1ZS00ZDE4LWE5ZjEtYTA4NjA2NWRlNTRkIiwidCI6ImY5MzRlNWY3LTAwODgtNGJlZS1hN2RlLWI5ZWNjNWY2OTQxZCIsImMiOjR9" allowfullscreen></iframe>
+      <div class="pbi-scroll">
+        <div class="pbi-frame">
+          <iframe title="Indicadores de la PMO (Power BI)" src="https://app.powerbi.com/view?r=eyJrIjoiZDQ4YmJkYTAtNjU1ZS00ZDE4LWE5ZjEtYTA4NjA2NWRlNTRkIiwidCI6ImY5MzRlNWY3LTAwODgtNGJlZS1hN2RlLWI5ZWNjNWY2OTQxZCIsImMiOjR9" scrolling="no" tabindex="-1"></iframe>
+        </div>
       </div>
-      <p class="pbi-note">Indicadores actualizados desde Power BI · <a href="https://app.powerbi.com/view?r=eyJrIjoiZDQ4YmJkYTAtNjU1ZS00ZDE4LWE5ZjEtYTA4NjA2NWRlNTRkIiwidCI6ImY5MzRlNWY3LTAwODgtNGJlZS1hN2RlLWI5ZWNjNWY2OTQxZCIsImMiOjR9" target="_blank" rel="noopener">Ver en pantalla completa</a></p>
+      <p class="pbi-note">Indicadores actualizados desde Power BI</p>
     </section>
 <section class="content news-section" id="newsCarousel" aria-labelledby="newsTitle">
       <div class="news-heading">
