@@ -625,11 +625,49 @@ try {
         const link = document.querySelector(`nav a[data-page="${f.dataset.preloadPage}"]`);
         if (link) link.addEventListener('click', () => cargar(f));
       });
+      // Si la persona entra directo a la sección (por ejemplo …/#gestion-bim), se carga de inmediato.
+      const seccionActual = location.hash.replace('#', '');
+      frames.filter(f => f.dataset.preloadPage === seccionActual).forEach(cargar);
       const enSegundoPlano = () => frames.forEach((f, i) => setTimeout(() => cargar(f), 1500 + i * 1500));
       if (document.readyState === 'complete') enSegundoPlano(); else window.addEventListener('load', enSegundoPlano);
     })()
 } catch (error) {
   console.error('[Portal PMO] Precarga en segundo plano:', error);
+}
+
+// ─── Mensaje de respaldo de los dashboards ─────────────────────────────────
+try {
+    // Si un dashboard no termina de cargar (red lenta, bloqueo del navegador o del servicio),
+    // aparece un aviso con un enlace para abrirlo en una pestaña nueva.
+    (function () {
+      const ESPERA_MS = 20000;
+      const vigilar = frame => {
+        if (frame.dataset.vigilado) return;
+        frame.dataset.vigilado = '1';
+        let cargado = false;
+        frame.addEventListener('load', () => { cargado = true; }, { once: true });
+        setTimeout(() => {
+          if (cargado || !frame.src) return;
+          const caja = frame.closest('.pbi-scroll, .powerbi-frame, .bim-embed') || frame.parentElement;
+          if (caja.nextElementSibling && caja.nextElementSibling.classList.contains('frame-fallback')) return;
+          const aviso = document.createElement('p');
+          aviso.className = 'frame-fallback';
+          aviso.setAttribute('role', 'status');
+          aviso.innerHTML = 'El dashboard está tardando en cargar. <a target="_blank" rel="noopener">Ábrelo en una pestaña nueva ↗</a>';
+          aviso.querySelector('a').href = frame.src;
+          caja.insertAdjacentElement('afterend', aviso);
+          frame.addEventListener('load', () => aviso.remove(), { once: true });
+        }, ESPERA_MS);
+      };
+      const frames = document.querySelectorAll('.pbi-frame iframe, .powerbi-frame iframe, #bimFrame');
+      frames.forEach(frame => {
+        if (frame.getAttribute('src')) vigilar(frame);
+        else new MutationObserver((_, obs) => { if (frame.getAttribute('src')) { obs.disconnect(); vigilar(frame); } })
+          .observe(frame, { attributes: true, attributeFilter: ['src'] });
+      });
+    })()
+} catch (error) {
+  console.error('[Portal PMO] Mensaje de respaldo de los dashboards:', error);
 }
 
 // ─── Proyectos destacados ──────────────────────────────────────────────────
