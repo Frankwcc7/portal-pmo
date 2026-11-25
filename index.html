@@ -1922,6 +1922,22 @@
     .video-play svg { width: 30px; height: 30px; margin-left: 4px; fill: #fff; }
     .video-thumb:hover .video-play { background: var(--cyan); transform: translate(-50%,-50%) scale(1.06); }
     @media (max-width: 760px) { .video-grid { grid-template-columns: 1fr; gap: 18px; } .video-card h3 { font-size: 16px; } }
+      #projectsView .project-photo { height: 230px; overflow: hidden; background: #E7F1F7; }
+    #projectsView .project-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    #projectsView .project-photo-card:hover .project-photo img { transform: scale(1.04); }
+    #projectsView .project-photo-info h3 { margin: 0; font-size: 16px; line-height: 1.4; }
+    #projectsView .project-gallery-footer { display: flex; align-items: center; justify-content: center; gap: 12px; padding-top: 16px; }
+    /* Documentos: los botones quedan alineados abajo aunque el título sea largo */
+    .document-card { align-items: stretch !important; }
+    .document-type-icon { align-self: center; }
+    .document-info { display: flex; flex-direction: column; }
+    .document-info h3 { margin-bottom: 14px !important; }
+    .document-download { margin-top: auto !important; align-self: flex-start; }
+    /* Videos: 3 por fila y títulos centrados */
+    .video-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 20px !important; }
+    .video-card h3 { text-align: center; font-size: 15.5px !important; padding: 13px 14px 15px !important; }
+    @media (max-width: 1050px) { .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+    @media (max-width: 640px) { .video-grid { grid-template-columns: 1fr !important; } }
   </style>
 </head>
 <body>
@@ -2097,9 +2113,9 @@
           <div class="powerbi-frame">
             <iframe
               title="MODELO 01 - Dashboard de proyectos ELECTROPERU"
-              src="https://app.powerbi.com/view?r=eyJrIjoiZjhmNjhkNDItZjlhNC00ZjM2LWFhMWYtZjdmMmY5OTBiZDM1IiwidCI6ImY5MzRlNWY3LTAwODgtNGJlZS1hN2RlLWI5ZWNjNWY2OTQxZCIsImMiOjR9"
-              allowfullscreen="true"
-              loading="lazy">
+              data-preload-src="https://app.powerbi.com/view?r=eyJrIjoiZjhmNjhkNDItZjlhNC00ZjM2LWFhMWYtZjdmMmY5OTBiZDM1IiwidCI6ImY5MzRlNWY3LTAwODgtNGJlZS1hN2RlLWI5ZWNjNWY2OTQxZCIsImMiOjR9"
+              data-preload-page="proyectos"
+              allowfullscreen="true">
             </iframe>
           </div>
         </section>
@@ -2109,11 +2125,18 @@
             <div class="project-gallery-controls" aria-label="Navegar fotografías de proyectos"><button class="project-gallery-arrow" type="button" data-project-prev aria-label="Fotografías anteriores">‹</button><button class="project-gallery-arrow" type="button" data-project-next aria-label="Fotografías siguientes">›</button></div>
           </div>
           <div class="project-gallery-viewport"><div class="project-gallery-track" data-project-track>
-            <article class="project-photo-card"><div class="project-photo-placeholder" role="img" aria-label="Espacio reservado para la fotografía del primer proyecto destacado"><div class="project-placeholder-art" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 38h38M9 38V17h7v21M20 38V10h8v28M32 38V21h7v17M5 17l7-7 6 7M20 10l4-6 6 6M32 21l7-7 4 7"/><path d="M12 23h2m9-5h3m-3 7h3m9 3h2"/></svg></div><span class="project-placeholder-label">Foto por agregar</span></div><div class="project-photo-info"><h3>Proyecto destacado 01</h3><p>Espacio reservado para una fotografía del proyecto.</p></div></article>
-            <article class="project-photo-card"><div class="project-photo-placeholder" role="img" aria-label="Espacio reservado para la fotografía del segundo proyecto destacado"><div class="project-placeholder-art" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 38h38M9 38V17h7v21M20 38V10h8v28M32 38V21h7v17M5 17l7-7 6 7M20 10l4-6 6 6M32 21l7-7 4 7"/><path d="M12 23h2m9-5h3m-3 7h3m9 3h2"/></svg></div><span class="project-placeholder-label">Foto por agregar</span></div><div class="project-photo-info"><h3>Proyecto destacado 02</h3><p>Espacio reservado para una fotografía del proyecto.</p></div></article>
-            <article class="project-photo-card"><div class="project-photo-placeholder" role="img" aria-label="Espacio reservado para la fotografía del tercer proyecto destacado"><div class="project-placeholder-art" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 38h38M9 38V17h7v21M20 38V10h8v28M32 38V21h7v17M5 17l7-7 6 7M20 10l4-6 6 6M32 21l7-7 4 7"/><path d="M12 23h2m9-5h3m-3 7h3m9 3h2"/></svg></div><span class="project-placeholder-label">Foto por agregar</span></div><div class="project-photo-info"><h3>Proyecto destacado 03</h3><p>Espacio reservado para una fotografía del proyecto.</p></div></article>
+            <article class="project-photo-card"><div class="project-photo"><img src="assets/img/proyectos/intervenciones-prioritarias-en-la-central-hidroelectrica-san.webp" alt="Intervenciones Prioritarias en la Central Hidroeléctrica Santiago Antúnez de Mayolo" loading="lazy" decoding="async"></div><div class="project-photo-info"><h3>Intervenciones Prioritarias en la Central Hidroeléctrica Santiago Antúnez de Mayolo</h3></div></article>
+            <article class="project-photo-card"><div class="project-photo"><img src="assets/img/proyectos/intervenciones-prioritarias-en-la-central-hidroelectrica-res.webp" alt="Intervenciones Prioritarias en la Central Hidroeléctrica Restitución" loading="lazy" decoding="async"></div><div class="project-photo-info"><h3>Intervenciones Prioritarias en la Central Hidroeléctrica Restitución</h3></div></article>
+            <article class="project-photo-card"><div class="project-photo"><img src="assets/img/proyectos/implementacion-del-sistema-de-almacenamiento-de-energia-en-b.webp" alt="Implementación del sistema de almacenamiento de energía en baterías (BESS) para RPF en ELECTROPERU" loading="lazy" decoding="async"></div><div class="project-photo-info"><h3>Implementación del sistema de almacenamiento de energía en baterías (BESS) para RPF en ELECTROPERU</h3></div></article>
+            <article class="project-photo-card"><div class="project-photo"><img src="assets/img/proyectos/rehabilitacion-de-los-alivios-1-2-y-3-de-la-presa-tablachaca.webp" alt="Rehabilitación de los Alivios 1, 2 y 3 de la Presa Tablachaca" loading="lazy" decoding="async"></div><div class="project-photo-info"><h3>Rehabilitación de los Alivios 1, 2 y 3 de la Presa Tablachaca</h3></div></article>
+            <article class="project-photo-card"><div class="project-photo"><img src="assets/img/proyectos/construccion-de-relleno-sanitario-para-residuos-genericos-no.webp" alt="Construcción de Relleno Sanitario para residuos genéricos no peligrosos en Quichuas" loading="lazy" decoding="async"></div><div class="project-photo-info"><h3>Construcción de Relleno Sanitario para residuos genéricos no peligrosos en Quichuas</h3></div></article>
+            <article class="project-photo-card"><div class="project-photo"><img src="assets/img/proyectos/recuperacion-del-campamento-quichuas-de-la-presa-tablachaca.webp" alt="Recuperación del campamento Quichuas de la Presa Tablachaca" loading="lazy" decoding="async"></div><div class="project-photo-info"><h3>Recuperación del campamento Quichuas de la Presa Tablachaca</h3></div></article>
+            <article class="project-photo-card"><div class="project-photo"><img src="assets/img/proyectos/creacion-del-afianzamiento-hidrico-laguna-llacsa.webp" alt="Creación del afianzamiento hídrico - Laguna Llacsa" loading="lazy" decoding="async"></div><div class="project-photo-info"><h3>Creación del afianzamiento hídrico - Laguna Llacsa</h3></div></article>
+            <article class="project-photo-card"><div class="project-photo"><img src="assets/img/proyectos/creacion-del-afianzamiento-hidrico-laguna-paucara.webp" alt="Creación del afianzamiento hídrico - Laguna Paucará" loading="lazy" decoding="async"></div><div class="project-photo-info"><h3>Creación del afianzamiento hídrico - Laguna Paucará</h3></div></article>
+            <article class="project-photo-card"><div class="project-photo"><img src="assets/img/proyectos/mantenimiento-del-tunel-de-aduccion.webp" alt="Mantenimiento del túnel de aducción" loading="lazy" decoding="async"></div><div class="project-photo-info"><h3>Mantenimiento del túnel de aducción</h3></div></article>
+            <article class="project-photo-card"><div class="project-photo"><img src="assets/img/proyectos/implementacion-bim.webp" alt="Implementación BIM" loading="lazy" decoding="async"></div><div class="project-photo-info"><h3>Implementación BIM</h3></div></article>
           </div></div>
-          <p class="project-gallery-count" data-project-count>3 fotografías</p>
+          <div class="project-gallery-footer"><div class="news-dots" data-project-dots role="group" aria-label="Seleccionar proyectos"></div><span class="news-count" data-project-count aria-live="polite"></span></div>
         </section>
       </div>
     </section>
@@ -2131,7 +2154,7 @@
           </div>
           <div class="bim-frame">
             <p class="bim-loading">Cargando dashboard BIM…</p>
-            <iframe id="bimFrame" title="Dashboard de Gestión BIM de ELECTROPERU" src="https://electroperu-bim-dashboard.vercel.app/pmo?footer=0" scrolling="no" loading="lazy" allowfullscreen></iframe>
+            <iframe id="bimFrame" title="Dashboard de Gestión BIM de ELECTROPERU" data-preload-src="https://electroperu-bim-dashboard.vercel.app/pmo?footer=0" data-preload-page="gestion-bim" scrolling="no" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -3049,22 +3072,34 @@
   const prev = section.querySelector('[data-project-prev]');
   const next = section.querySelector('[data-project-next]');
   const count = section.querySelector('[data-project-count]');
+  const dots = section.querySelector('[data-project-dots]');
   const cards = Array.from(track.children);
   let index = 0;
   const visible = () => window.matchMedia('(max-width: 600px)').matches ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
+  const pages = () => Math.max(1, cards.length - visible() + 1);
+  const renderDots = () => {
+    dots.replaceChildren();
+    for (let i = 0; i < pages(); i++) {
+      const dot = document.createElement('button');
+      dot.type = 'button'; dot.className = 'news-dot';
+      dot.setAttribute('aria-label', `Mostrar proyectos ${i + 1} a ${Math.min(i + visible(), cards.length)}`);
+      dot.addEventListener('click', () => { index = i; update(); });
+      dots.appendChild(dot);
+    }
+  };
   const update = () => {
-    const perPage = visible();
-    const max = Math.max(0, cards.length - perPage);
-    index = Math.min(index, max);
+    if (dots.children.length !== pages()) renderDots();
+    index = Math.min(Math.max(index, 0), pages() - 1);
     const gap = parseFloat(getComputedStyle(track).gap) || 0;
     const width = cards[0]?.getBoundingClientRect().width || 0;
     track.style.transform = `translateX(-${index * (width + gap)}px)`;
     prev.disabled = index === 0;
-    next.disabled = index >= max;
-    count.textContent = `${cards.length} ${cards.length === 1 ? 'fotografía' : 'fotografías'}`;
+    next.disabled = index >= pages() - 1;
+    [...dots.children].forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
+    count.textContent = `${index + 1}–${Math.min(index + visible(), cards.length)} de ${cards.length}`;
   };
-  prev.addEventListener('click', () => { index = Math.max(0, index - visible()); update(); });
-  next.addEventListener('click', () => { index = Math.min(Math.max(0, cards.length - visible()), index + visible()); update(); });
+  prev.addEventListener('click', () => { index -= 1; update(); });
+  next.addEventListener('click', () => { index += 1; update(); });
   window.addEventListener('resize', update);
   if ('ResizeObserver' in window) new ResizeObserver(update).observe(section);
   update();
@@ -3148,6 +3183,20 @@
     f.allowFullscreen = true;
     btn.replaceWith(f);
   }));
+</script>
+<script>
+  // Precarga en segundo plano: los dashboards de Proyectos y Gestión BIM empiezan a cargar
+  // poco después de abrir la web, así ya están listos cuando la persona entra a esas secciones.
+  (function () {
+    const frames = [...document.querySelectorAll('iframe[data-preload-src]')];
+    const cargar = f => { if (!f.src) f.src = f.dataset.preloadSrc; };
+    frames.forEach(f => {
+      const link = document.querySelector(`nav a[data-page="${f.dataset.preloadPage}"]`);
+      if (link) link.addEventListener('click', () => cargar(f));
+    });
+    const enSegundoPlano = () => frames.forEach((f, i) => setTimeout(() => cargar(f), 1500 + i * 1500));
+    if (document.readyState === 'complete') enSegundoPlano(); else window.addEventListener('load', enSegundoPlano);
+  })();
 </script>
 <script>
   // Logo del encabezado y del pie: vuelven al Inicio. El año del pie se mantiene al día.
