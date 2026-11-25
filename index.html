@@ -2819,45 +2819,6 @@
 </script>
 <button class="back-to-top" id="backToTop" type="button" aria-label="Volver al inicio" title="Volver al inicio">↑</button>
 <script>
-  // Integración dinámica: configura aquí la URL de un endpoint seguro que lea Data_madre
-  // y responda JSON con { "projectCount": 45, "initiativeCount": 1, "updatedAt": "2026-11-17T18:00:00Z" }.
-  // El endpoint puede implementarse con Power Automate / una función de backend. No pongas credenciales en este HTML.
-  const PMO_COUNTS_ENDPOINT = ""; // desactivado: los indicadores ahora vienen de Power BI
-  const PMO_COUNTS_REFRESH_MS = 60 * 1000; // revisa kpi.json cada minuto
-  const countElements = {
-    projects: document.getElementById("projectCount"),
-    initiatives: document.getElementById("initiativeCount"),
-    projectsNote: document.getElementById("projectCountNote"),
-    initiativesNote: document.getElementById("initiativeCountNote")
-  };
-  async function refreshPmoCounts() {
-    if (!PMO_COUNTS_ENDPOINT) return;
-    try {
-      const response = await fetch(`${PMO_COUNTS_ENDPOINT}?t=${Date.now()}`, { cache: "no-store", headers: { Accept: "application/json" } });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data = await response.json();
-      const projects = Number(data.projectCount);
-      const initiatives = Number(data.initiativeCount);
-      if (!Number.isInteger(projects) || projects < 0 || !Number.isInteger(initiatives) || initiatives < 0) {
-        throw new Error("El endpoint no devolvió projectCount e initiativeCount válidos.");
-      }
-      countElements.projects.textContent = projects.toLocaleString("es-PE");
-      countElements.initiatives.textContent = initiatives.toLocaleString("es-PE");
-      const updatedAt = data.updatedAt ? new Date(data.updatedAt) : new Date();
-      const stamp = Number.isNaN(updatedAt.getTime()) ? "ahora" : updatedAt.toLocaleString("es-PE", { dateStyle: "short", timeStyle: "short" });
-      countElements.projectsNote.textContent = `Data_madre · contador = 0 · actualizado ${stamp}`;
-      countElements.initiativesNote.textContent = `Data_madre · contador = 1 · actualizado ${stamp}`;
-    } catch (error) {
-      console.error("No se pudo actualizar el conteo PMO:", error);
-      countElements.projectsNote.textContent = "Conteo de Data_madre · no se pudo actualizar";
-      countElements.initiativesNote.textContent = "Conteo de Data_madre · no se pudo actualizar";
-    }
-  }
-  refreshPmoCounts();
-  window.setInterval(refreshPmoCounts, PMO_COUNTS_REFRESH_MS);
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") refreshPmoCounts();
-  });
     (() => {
       const section = document.getElementById('newsCarousel');
       if (!section) return;
