@@ -1894,6 +1894,34 @@
 #managementView .org-connectors { position:absolute; inset:0; z-index:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
 #managementView .org-connectors path { fill:none; stroke:#8FB9CD; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 #managementView .org-sponsor, #managementView .org-top-connectors, #managementView .org-portfolio-grid { position:relative; z-index:1; }
+      /* Noticias: sin franjas en blanco. Si la proporción del flyer es parecida a la del recuadro, la imagen lo llena;
+       si es muy distinta, se muestra completa sobre un fondo difuminado de la misma imagen. */
+    .news-image-button::before {
+      content: ""; position: absolute; inset: -24px; z-index: 0;
+      background: var(--news-bg, none) center / cover no-repeat;
+      filter: blur(18px) saturate(1.1); opacity: .55; transform: scale(1.06);
+    }
+    .news-image-button img {
+      position: absolute !important; inset: 0; z-index: 1;
+      width: 100% !important; height: 100% !important; max-width: none; max-height: none; object-fit: contain !important;
+    }
+    .news-image-button.is-fill img { object-fit: cover !important; object-position: center; }
+    .news-image-button .news-zoom-hint { z-index: 2; }
+      .video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 22px; }
+    .video-card { overflow: hidden; background: #fff; border: 1px solid #DCE8F0; border-radius: 18px; box-shadow: 0 10px 26px rgba(0,55,105,.07); }
+    .video-card h3 { margin: 0; padding: 14px 18px 16px; color: var(--blue); font-size: 17px; line-height: 1.35; }
+    .video-thumb, .video-card iframe { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; background: #0B2740; }
+    .video-thumb { cursor: pointer; overflow: hidden; }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+    .video-thumb:hover img { transform: scale(1.04); }
+    .video-play {
+      position: absolute; left: 50%; top: 50%; display: grid; place-items: center; width: 68px; height: 68px;
+      border-radius: 50%; background: rgba(0,61,115,.88); transform: translate(-50%,-50%);
+      box-shadow: 0 8px 22px rgba(0,0,0,.25); transition: background .2s ease, transform .2s ease;
+    }
+    .video-play svg { width: 30px; height: 30px; margin-left: 4px; fill: #fff; }
+    .video-thumb:hover .video-play { background: var(--cyan); transform: translate(-50%,-50%) scale(1.06); }
+    @media (max-width: 760px) { .video-grid { grid-template-columns: 1fr; gap: 18px; } .video-card h3 { font-size: 16px; } }
   </style>
 </head>
 <body>
@@ -2114,21 +2142,50 @@
           <div class="eyebrow">ELECTROPERU · Gerencia de Proyectos</div>
           <h1 id="videosTitle">Videos</h1>
         </div>
-        
-                <section class="awards-video-section" aria-label="Video institucional de ELECTROPERU">
-          <div class="awards-video-frame">
-            <iframe
-              width="1059"
-              height="595"
-              src="https://www.youtube-nocookie.com/embed/Unz9EVj9ey4?si=oL_XKLZT5vgcal9b"
-              title="ELECTROPERU recibe a estudiantes de posgrado de la Universidad de la Costa de Colombia"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen>
-            </iframe>
-          </div>
-        </section>      </div>
+        <div class="video-grid">
+          <article class="video-card">
+            <button class="video-thumb" type="button" data-video="2_yqVKwhSj8" data-start="35" aria-label="Reproducir: Gestión responsable de residuos en el distrito de Quichuas">
+              <img src="https://i.ytimg.com/vi/2_yqVKwhSj8/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            </button>
+            <h3>Gestión responsable de residuos en el distrito de Quichuas</h3>
+          </article>
+          <article class="video-card">
+            <button class="video-thumb" type="button" data-video="hMLC6tRFbBs" data-start="0" aria-label="Reproducir: Presentación del Portafolio de Proyectos de ELECTROPERU">
+              <img src="https://i.ytimg.com/vi/hMLC6tRFbBs/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            </button>
+            <h3>Presentación del Portafolio de Proyectos de ELECTROPERU</h3>
+          </article>
+          <article class="video-card">
+            <button class="video-thumb" type="button" data-video="53RE2z3-ro0" data-start="0" aria-label="Reproducir: Lecciones Aprendidas 2024 de ELECTROPERU">
+              <img src="https://i.ytimg.com/vi/53RE2z3-ro0/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            </button>
+            <h3>Lecciones Aprendidas 2024 de ELECTROPERU</h3>
+          </article>
+          <article class="video-card">
+            <button class="video-thumb" type="button" data-video="NgBgikrNZFI" data-start="0" aria-label="Reproducir: Kick Off del Proyecto de Intervenciones Prioritarias">
+              <img src="https://i.ytimg.com/vi/NgBgikrNZFI/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            </button>
+            <h3>Kick Off del Proyecto de Intervenciones Prioritarias</h3>
+          </article>
+          <article class="video-card">
+            <button class="video-thumb" type="button" data-video="ONtZl7CXwWA" data-start="0" aria-label="Reproducir: Firma de contrato">
+              <img src="https://i.ytimg.com/vi/ONtZl7CXwWA/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            </button>
+            <h3>Firma de contrato</h3>
+          </article>
+          <article class="video-card">
+            <button class="video-thumb" type="button" data-video="ol8QDxVM9IQ" data-start="0" aria-label="Reproducir: Logros en la adopción progresiva de la metodología BIM">
+              <img src="https://i.ytimg.com/vi/ol8QDxVM9IQ/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+              <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            </button>
+            <h3>Logros en la adopción progresiva de la metodología BIM</h3>
+          </article>
+        </div>      </div>
     </section>
     <section id="portfoliosView" class="portfolio-view" hidden aria-labelledby="portfolioTitle">
       <div class="content portfolio-shell">
@@ -2491,8 +2548,10 @@
         </section>        <section class="documents-section" aria-labelledby="documentsTitle">
           <div class="documents-heading"><div><span class="section-kicker">Biblioteca PMO</span><h2 id="documentsTitle">Documentos</h2><p>Manuales y recursos descargables para la gestión de proyectos.</p></div><div class="documents-controls" aria-label="Navegar documentos"><button class="documents-arrow" type="button" data-doc-prev aria-label="Documentos anteriores">‹</button><button class="documents-arrow" type="button" data-doc-next aria-label="Documentos siguientes">›</button></div></div>
           <div class="documents-viewport"><div class="documents-track" data-doc-track>
-            <article class="document-card"><div class="document-type-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h18l9 9v29H11z"/><path d="M29 5v10h9M17 24h15M17 30h15M17 36h10"/><path d="M7 10v32h27"/></svg></div><div class="document-info"><h3>Manual para la Gestión de Portafolios, Programas y Proyectos</h3><a class="document-download" href="https://fonafegob-my.sharepoint.com/personal/lalarconp_electroperu_com_pe/_layouts/15/onedrive.aspx?viewid=37ee5697%2Df1aa%2D46e1%2Dabea%2D2c688a50ca3d&amp;ga=1&amp;id=%2Fpersonal%2Flalarconp%5Felectroperu%5Fcom%5Fpe%2FDocuments%2FCompartidos%20con%20R%2FServ%20Implementaci%C3%B3n%20de%20Lineamientos%2FDashboard%5FPMO%2FP%C3%81GINA%20WEB%2FDocumentos%20WEB%20PMO%2FManual%20portafolios%2Epdf&amp;parent=%2Fpersonal%2Flalarconp%5Felectroperu%5Fcom%5Fpe%2FDocuments%2FCompartidos%20con%20R%2FServ%20Implementaci%C3%B3n%20de%20Lineamientos%2FDashboard%5FPMO%2FP%C3%81GINA%20WEB%2FDocumentos%20WEB%20PMO" target="_blank" rel="noopener"><span>Descargar manual</span><span aria-hidden="true">↓</span></a></div></article>
-          </div></div><p class="document-count" data-doc-count>1 documento</p>
+            <article class="document-card"><div class="document-type-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h18l9 9v29H11z"/><path d="M29 5v10h9M17 24h15M17 30h15M17 36h10"/><path d="M7 10v32h27"/></svg></div><div class="document-info"><h3>Manual para la Gestión de Portafolios, Programas y Proyectos</h3><a class="document-download" href="https://fonafegob-my.sharepoint.com/:b:/g/personal/lalarconp_electroperu_com_pe/IQCw5qoCAEs7TI4H_cb6nwcSAaV6BkGHmvT06igb3vBXh34?e=2d4177" target="_blank" rel="noopener"><span>Ver documento</span><span aria-hidden="true">↗</span></a></div></article>
+            <article class="document-card"><div class="document-type-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h18l9 9v29H11z"/><path d="M29 5v10h9M17 24h15M17 30h15M17 36h10"/><path d="M7 10v32h27"/></svg></div><div class="document-info"><h3>Aprobación de la Actualización de Tasas de Descuento Económica y Financiera para la Evaluación de Proyectos</h3><a class="document-download" href="https://fonafegob-my.sharepoint.com/:b:/g/personal/lalarconp_electroperu_com_pe/IQA_CZ8qVBdoRr29eYlxV8RBAehMQsEaTCIj0BlIskRcW_w?e=u8FDED" target="_blank" rel="noopener"><span>Ver documento</span><span aria-hidden="true">↗</span></a></div></article>
+            <article class="document-card"><div class="document-type-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h18l9 9v29H11z"/><path d="M29 5v10h9M17 24h15M17 30h15M17 36h10"/><path d="M7 10v32h27"/></svg></div><div class="document-info"><h3>Plan de Mentoría de la Gerencia de Proyectos</h3><a class="document-download" href="https://fonafegob-my.sharepoint.com/:b:/g/personal/lalarconp_electroperu_com_pe/IQDcrUOY3S-9QJ3rf_jTRcBVATXQScelUd3QV5mFBMJFb-w?e=bKaalC" target="_blank" rel="noopener"><span>Ver documento</span><span aria-hidden="true">↗</span></a></div></article>
+          </div></div><p class="document-count" data-doc-count>3 documentos</p>
         </section>      </div>
     </section>
 
@@ -3061,6 +3120,34 @@
     iframe.addEventListener('load', () => setTimeout(listo, 2500));
     setTimeout(listo, 6000); // por si el informe ya había cargado antes de este script
   })();
+</script>
+<script>
+  // Noticias: ajusta cada flyer a su tarjeta (llenar o fondo difuminado) según su proporción.
+  (function () {
+    const ajustar = img => {
+      const box = img.parentElement;
+      if (!img.naturalWidth || !box.clientHeight) return;
+      const ratio = img.naturalWidth / img.naturalHeight;
+      const boxRatio = box.clientWidth / box.clientHeight;
+      box.style.setProperty('--news-bg', `url("${img.currentSrc || img.src}")`);
+      box.classList.toggle('is-fill', Math.abs(ratio - boxRatio) / boxRatio < 0.08);
+    };
+    const imgs = [...document.querySelectorAll('.news-image-button img')];
+    imgs.forEach(img => img.complete ? ajustar(img) : img.addEventListener('load', () => ajustar(img)));
+    window.addEventListener('resize', () => imgs.forEach(ajustar));
+  })();
+</script>
+<script>
+  // Videos: se carga el reproductor de YouTube solo al hacer clic (la página abre más rápido).
+  document.querySelectorAll('.video-thumb').forEach(btn => btn.addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${btn.dataset.video}?autoplay=1&rel=0&start=${btn.dataset.start || 0}`;
+    f.title = btn.getAttribute('aria-label').replace('Reproducir: ', '');
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.allowFullscreen = true;
+    btn.replaceWith(f);
+  }));
 </script>
 <script>
   // Logo del encabezado y del pie: vuelven al Inicio. El año del pie se mantiene al día.
