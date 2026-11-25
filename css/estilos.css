@@ -3831,6 +3831,31 @@ body { background: #F4F8FB; }
   z-index: 1;
 }
 
+/* Jerarquía superior del organigrama: Sponsor arriba, PMO debajo y Comité a la derecha */
+#managementView .org-sponsor {
+  width: 300px;
+  max-width: 300px;
+  margin: 0 0 0 calc(50% - 310px);
+}
+
+#managementView .org-top-connectors {
+  width: 620px;
+  max-width: 620px;
+  grid-template-columns: 298px 298px;
+  gap: 24px;
+  margin: 0 0 0 calc(50% - 310px);
+  padding-top: 14px;
+}
+
+#managementView .org-top-connectors .org-node {
+  width: 100%;
+  min-height: 76px;
+}
+
+@media (max-width: 600px) {
+  #managementView .org-sponsor, #managementView .org-top-connectors { margin-left: calc(50% - 310px); }
+}
+
 /* Noticias: sin franjas en blanco. Si la proporción del flyer es parecida a la del recuadro, la imagen lo llena;
    si es muy distinta, se muestra completa sobre un fondo difuminado de la misma imagen. */
 .news-image-button::before {

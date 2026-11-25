@@ -532,36 +532,45 @@ try {
       const chart = document.querySelector('#managementView .org-chart');
       const svg = chart?.querySelector('.org-connectors');
       if (!chart || !svg) return;
-      const connect = (source, targets) => {
-        if (!source || !targets.length) return;
-        const base = chart.getBoundingClientRect();
-        const start = source.getBoundingClientRect();
-        const points = targets.map(node => node.getBoundingClientRect());
-        const x1 = start.left + start.width / 2 - base.left;
-        const y1 = start.bottom - base.top;
-        const y2 = Math.min(...points.map(rect => rect.top - base.top));
-        const branchY = y1 + Math.max(14, (y2 - y1) / 2);
-        const centers = points.map(rect => rect.left + rect.width / 2 - base.left);
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        let d = `M ${x1} ${y1} V ${branchY} H ${Math.min(...centers)}`;
-        if (centers.length > 1) d += ` M ${Math.min(...centers)} ${branchY} H ${Math.max(...centers)}`;
-        centers.forEach((x, index) => { d += ` M ${x} ${branchY} V ${points[index].top - base.top}`; });
-        path.setAttribute('d', d);
-        svg.appendChild(path);
+      const path = d => {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        line.setAttribute('d', d);
+        svg.appendChild(line);
       };
       const draw = () => {
+        const base = chart.getBoundingClientRect();
         const width = chart.scrollWidth;
         const height = chart.scrollHeight;
         svg.setAttribute('width', width);
         svg.setAttribute('height', height);
         svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
         svg.replaceChildren();
-        const sponsor = chart.querySelector('.org-sponsor');
+        const relative = node => {
+          const r = node.getBoundingClientRect();
+          return { left:r.left-base.left, right:r.right-base.left, top:r.top-base.top, bottom:r.bottom-base.top, cx:r.left+r.width/2-base.left, cy:r.top+r.height/2-base.top };
+        };
+        const sponsorNode = chart.querySelector('.org-sponsor');
         const topNodes = Array.from(chart.querySelectorAll('.org-top-connectors .org-node'));
-        const pmo = topNodes.find(node => node.dataset.orgTitle?.startsWith('Oficina de Gestión'));
+        const pmoNode = topNodes.find(node => node.dataset.orgTitle?.startsWith('Oficina de Gestión'));
+        const committeeNode = topNodes.find(node => node.dataset.orgTitle?.startsWith('Comité de Dirección'));
         const owners = Array.from(chart.querySelectorAll('.org-owner'));
-        connect(sponsor, topNodes);
-        connect(pmo, owners);
+        if (!sponsorNode || !pmoNode || !committeeNode || !owners.length) return;
+        const sponsor = relative(sponsorNode);
+        const pmo = relative(pmoNode);
+        const committee = relative(committeeNode);
+        // Sponsor -> PMO: vertical, because the PMO is directly beneath the Sponsor.
+        path(`M ${sponsor.cx} ${sponsor.bottom} V ${pmo.top}`);
+        // Sponsor -> Committee: right-angle connector from the Sponsor's right edge.
+        path(`M ${sponsor.right} ${sponsor.cy} H ${committee.cx} V ${committee.top}`);
+        // PMO <-> Committee: horizontal coordination connection.
+        path(`M ${pmo.right} ${pmo.cy} H ${committee.left}`);
+        // PMO -> portfolio owners: one trunk with a branch to each owner.
+        const ownerRects = owners.map(relative);
+        const branchY = pmo.bottom + Math.max(16, (Math.min(...ownerRects.map(r => r.top)) - pmo.bottom) / 2);
+        const first = Math.min(...ownerRects.map(r => r.cx));
+        const last = Math.max(...ownerRects.map(r => r.cx));
+        path(`M ${pmo.cx} ${pmo.bottom} V ${branchY} H ${last} M ${first} ${branchY} H ${last}`);
+        ownerRects.forEach(owner => path(`M ${owner.cx} ${branchY} V ${owner.top}`));
       };
       draw();
       window.addEventListener('resize', draw);
