@@ -204,7 +204,15 @@ try {
     const revealTargets = document.querySelectorAll(
       '.intro, .stat-card, .portfolio-heading, .portfolio-purpose, .portfolio-card, .management-heading, .history-section, .timeline-item, .management-topic, .topic-highlight, .knowledge-photo, .awards-criteria div, .awards-video-section'
     );
+    // Lo que ya se ve al abrir la página se muestra de inmediato (sin parpadeo ni retraso);
+    // la animación de aparición queda para el contenido que entra al hacer scroll.
+    const yaVisible = element => {
+      if (!element.offsetParent) return false;
+      const r = element.getBoundingClientRect();
+      return r.top < window.innerHeight && r.bottom > 0;
+    };
     revealTargets.forEach((element, index) => {
+      if (yaVisible(element)) return;
       element.classList.add('reveal-on-scroll');
       if (index % 4 === 1) element.dataset.revealDelay = '1';
       if (index % 4 === 2) element.dataset.revealDelay = '2';
@@ -220,7 +228,7 @@ try {
           }
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
-      revealTargets.forEach(element => revealObserver.observe(element));
+      revealTargets.forEach(element => { if (element.classList.contains('reveal-on-scroll')) revealObserver.observe(element); });
     } else {
       revealTargets.forEach(element => element.classList.add('is-visible'));
     }

@@ -17,6 +17,7 @@
   --pale: #F2F7FB;
   --white: #FFFFFF;
   --shadow: 0 14px 34px rgba(0, 55, 105, .09);
+  --cyan-text: #0A78AD; /* celeste con contraste suficiente para textos pequeños */
   --line: #DCE8F0;
   --text-soft: #526A7F;
   --shadow-hover: 0 20px 42px rgba(0, 55, 105, .14);
@@ -133,7 +134,7 @@ a {
 .intro { padding: 62px 0 34px; }
 
 .eyebrow {
-  color: var(--cyan);
+  color: var(--cyan-text);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -899,7 +900,7 @@ h1, h2, h3, p { margin-top: 0; }
   line-height: 1.5;
 }
 
-.footer-col h4 {
+.footer-col h2 {
   margin: 0 0 8px;
   color: #fff;
   font-size: 13px;
@@ -2156,7 +2157,7 @@ body { background: #F4F8FB; }
 
 .news-heading p {
   margin: 0;
-  color: #62788D;
+  color: #566C80;
   font-size: 15px;
 }
 
@@ -2261,28 +2262,32 @@ body { background: #F4F8FB; }
 
 .news-dots {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0;
+  margin-block: -7px; /* el área táctil extra no ocupa espacio */
 }
 
 .news-dot {
-  width: 10px;
-  height: 10px;
-  padding: 0;
+  /* Punto visible de 10 px dentro de un área táctil de 24 px */
+  width: 24px;
+  height: 24px;
+  padding: 7px;
   border: 0;
   border-radius: 99px;
   background: #B7CAD8;
+  background-clip: content-box;
   cursor: pointer;
   transition: width .2s ease,background .2s ease;
 }
 
 .news-dot[aria-current="true"] {
-  width: 26px;
-  background: var(--cyan);
+  width: 40px;
+  background-color: var(--cyan);
 }
 
 .news-count {
-  color: #657C90;
+  color: #566C80;
   font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
@@ -3870,7 +3875,7 @@ body { background: #F4F8FB; }
   box-shadow: 0 10px 26px rgba(0,55,105,.07);
 }
 
-.video-card h3 {
+.video-card h2 {
   margin: 0;
   color: var(--blue);
   line-height: 1.35;
@@ -3932,7 +3937,7 @@ body { background: #F4F8FB; }
     grid-template-columns: 1fr;
     gap: 18px;
   }
-  .video-card h3 {
+  .video-card h2 {
     font-size: 16px;
   }
 }
@@ -3973,7 +3978,7 @@ body { background: #F4F8FB; }
   gap: 20px;
 }
 
-.video-card h3 {
+.video-card h2 {
   text-align: center;
   font-size: 15.5px;
   padding: 13px 14px 15px;
