@@ -45,6 +45,7 @@ html.pmo-bloqueado body { overflow: hidden; }
   align-items: flex-end;
   padding: 40px;
   background: url("../assets/img/login-central.webp") center / cover no-repeat;
+  background-image: image-set(url("../assets/img/login-central.webp") 1x, url("../assets/img/login-central-4k.webp") 2x);
   color: #fff;
 }
 
